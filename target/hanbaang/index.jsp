@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");
 	String str = request.getParameter("id");
-	//str = new String(str .getBytes("8859_1"), "UTF-8"); 
+
 	if(str!=null){
 %>
 <html>
