@@ -51,9 +51,7 @@ public class TestDTO {
         return true;
     }
      
-    public String toString() {
-        return "TestDTO [id=" + id + ", num=" + num + "]";
-    }
+
      
      
 }
