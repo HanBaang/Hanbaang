@@ -32,5 +32,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Downloads/카카오톡 받은 파일/telink-2.2.10/telink-2.2.10.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

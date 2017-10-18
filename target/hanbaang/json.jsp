@@ -11,7 +11,7 @@
 
 				// 커넥션 연결
 				Connection conn = DBConnection.getConnection();
-
+			 
 				// DB에 쿼리문을 보낸다.
 				PreparedStatement pstmt = conn.prepareStatement(query);
 
