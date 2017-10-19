@@ -14,7 +14,7 @@
 <%@ page import="java.sql.*"%>
 <%
 	Connection conn = DBConnection.getConnection();
-	DAO_J dao = DAO_J.getInstance();
+	DAO dao = DAO.getInstance();
 	LinkedList<DTO_ACCOUNT> dao_ACC = dao.SELECT_ACCOUNT(conn);
 %>
 

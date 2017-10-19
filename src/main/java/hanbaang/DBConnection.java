@@ -16,6 +16,7 @@ public class DBConnection {
 		Context envCtx = (Context) initCtx.lookup("java:comp/env");
 		DataSource ds = (DataSource) envCtx.lookup("jdbc/hanbaang");
 		Connection conn = ds.getConnection();
+		
 		return conn;
 	}
 
