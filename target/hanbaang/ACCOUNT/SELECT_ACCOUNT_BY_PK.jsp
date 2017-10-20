@@ -13,13 +13,13 @@
 <%
 	Connection conn = DBConnection.getConnection();
 	DAO dao = DAO.getInstance();
-	DTO_ACCOUNT dao_ACC = dao.SELECT_ACCOUNT_BY_PK(1, conn);
+	DTO_ACCOUNT dto_ACC = dao.SELECT_ACCOUNT_BY_PK(1, conn);
 %>
 
 
 { "object" : [
 
-{"AC_id" : "<%=dao_ACC.AC_id%>", "ID" : "<%=dao_ACC.ID%>", "PW" : "<%=dao_ACC.PW%>", "HOSPI_NAME" : "<%=dao_ACC.HOSPI_NAME%>", "ORG_NUM" : "<%=dao_ACC.ORG_NUM%>", "COMP_NUM" : "<%=dao_ACC.COMP_NUM%>", "MAIL" : "<%=dao_ACC.MAIL%>", "ADDR" : "<%=dao_ACC.ADDR%>"}
+{"AC_id" : "<%=dto_ACC.AC_id%>", "ID" : "<%=dto_ACC.ID%>", "PW" : "<%=dto_ACC.PW%>", "HOSPI_NAME" : "<%=dto_ACC.HOSPI_NAME%>", "ORG_NUM" : "<%=dto_ACC.ORG_NUM%>", "COMP_NUM" : "<%=dto_ACC.COMP_NUM%>", "MAIL" : "<%=dto_ACC.MAIL%>", "ADDR" : "<%=dto_ACC.ADDR%>"}
 
 	]
 }

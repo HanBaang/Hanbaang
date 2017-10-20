@@ -1,6 +1,6 @@
 <%@page import="hanbaang.DBConnection"%>
 
-<%@page import="DTO.DTO_ACCOUNT"%>
+<%@page import="DTO.*"%>
 <%@page import="hanbaang.*"%>
 <%@page import="Data.*"%>
 <%@page import="DAO.*"%>
@@ -15,17 +15,17 @@
 <%
 	Connection conn = DBConnection.getConnection();
 	DAO dao = DAO.getInstance();
-	LinkedList<DTO_ACCOUNT> dao_ACC = dao.SELECT_ACCOUNT(conn);
+	LinkedList<DTO_RECEP> dto_R = dao.SELECT_RECEP(conn);
 %>
 
 
 { "object" : [
 <%
-	Iterator<DTO_ACCOUNT> iterator = dao_ACC.iterator();
+	Iterator<DTO_RECEP> iterator = dto_R.iterator();
 	while (iterator.hasNext()) {
-		DTO_ACCOUNT outer = iterator.next();
+		DTO_RECEP outer = iterator.next();
 %>
-{"AC_id" : "<%=outer.AC_id%>", "ID" : "<%=outer.ID%>", "PW" : "<%=outer.PW%>", "HOSPI_NAME" : "<%=outer.HOSPI_NAME%>", "ORG_NUM" : "<%=outer.ORG_NUM%>", "COMP_NUM" : "<%=outer.COMP_NUM%>", "MAIL" : "<%=outer.MAIL%>", "ADDR" : "<%=outer.ADDR%>"}<%=iterator.hasNext() ? "," : ""%>
+{"R_id" : "<%=outer.R_ID%>", "PA_id" : "<%=outer.PA_ID%>", "PATNT_NAME" : "<%=outer.PATNT_NAME%>", "RECEP_DATE" : "<%=outer.RECEP_DATE%>", "STATE" : "<%=outer.STATE%>", "MEMO" : "<%=outer.MEMO%>", "MDOC" : "<%=outer.MDOC%>", "STAFF_NAME" : "<%=outer.STAFF_NAME%>"}<%=iterator.hasNext() ? "," : ""%>
 <%
 	}
 %>
