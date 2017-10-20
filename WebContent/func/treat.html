@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>한방애</title>
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../js/ajax.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#header").load("../include/header_doc.html");
+   
+});
+$(function(){
+    $("#body").bind("click",function () {
+        $("#imageInput").attr('src','../../images/human.jpg');
+
+    })
+    $("#hand").click(function () {
+        $("#imageInput").attr('src','../../images/hand.jpg');
+    })
+    $("#foot").click(function () {
+        $("#imageInput").attr('src','../../images/foot.jpg');
+    })
+});
+</script>
+</head>
+<div id="header"></div>
+<!-- header include -->
+<body>
+    
+    <div id="left" style="float:left;width:47%;margin:10px"> 
+        <h3>환자정보</h3>
+        <hr align="left" style="border:solid 1px;">
+        <div class="container1">
+            <table width="100%" >
+                <tbody>
+                <tr height="50">
+                    <td>접수번호</td>
+                    <td>100001</td>
+                    <td>생년월일</td>
+                    <td>1995년 05월 13일</td>
+                </tr>
+                <tr height="50">
+                    <td>이름</td>
+                    <td>허경영</td>
+                    <td>휴대폰 번호</td>
+                    <td>010-0000-0001</td>
+                </tr>
+                <tr height="50">
+                    <td>성별</td>
+                    <td>남자</td>
+                    <td>주소</td>
+                    <td>서울특별시 테헤란로 311 7층</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr align="left" style="border:solid 1px;">
+        
+        <h3>진료기록</h3>
+        <input id="s_date" name="s_date" type="date" value="2017-10-10" >~<input id="d_date" name="d_date" type="date" value="2017-10-10">
+        <button type="button" class="btn">검색</button>    
+        
+        <div class="container2" >
+                <table class="table">
+                        <!-- <div style="overflow:scroll; height: 100px"> scrollbar-->
+                  <thead>
+                    <tr>
+                      <th>방문날짜</th>
+                      <th>병증명</th>
+                      <th>내용</th>
+                      <th>메모</th>
+                    </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                        </tr>
+                        <!-- collapse사용할것 -->
+                        <tr>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                            <td>mary@example.com</td>
+                        </tr>
+                        <tr>
+                            <td>July</td>
+                            <td>Dooley</td>
+                            <td>july@example.com</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            <!-- </div> -->
+            </div>
+        <div class="container3" style="width:50%;">
+                <h3>특이사항</h3>
+                <form>
+                  <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" rows="10" id="comment"></textarea>
+                  </div>
+                </form>
+        </div>
+    </div>
+    <div id="right"style="float:right;width:50%;padding:10px">
+        <!-- 이미지 위에 라디오버튼 추가하는 부분 -->
+        <!-- <input type="radio" id="abc" name="address"style="background-image:url(../../images/hand.jpg)"/>
+        <label for="abc"></label>
+        <input type="image" src="" style="float:right"> -->
+
+        <!-- 체크박스선택에 따라 손,발,몸 이미지 보여주기 ajax-->
+        <button type="button" class="btn" id="body">몸</button>
+        <button type="button" class="btn" id="hand">손</button>
+        <button type="button" class="btn" id="foot">발</button>
+        <img id="imageInput" src="../../images/human.jpg"></div>
+
+        
+    </div>
+    <div id="checkboxes" style="clear:right">
+        <input type="checkbox" value="">침
+        <input type="checkbox" value="">뜸
+    </div>
+    <!-- <div id="left"style="float:left;width:50%">
+        left
+    </div> -->
+</body>
+</html>

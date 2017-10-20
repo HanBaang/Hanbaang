@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>한방애</title>
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../js/ajax.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $("#header").load("../include/header_doc.html");
+
+});
+</script>
+</head>
+<div id="header"></div>
+<body>
+    <div id="left"  style="float:left;width:40%;margin:3px">
+    조회기간을 선택하세요<br>
+    <hr align="left" style="border:solid 1px;">
+
+    <input id="s_date" name="s_date" type="date" value="2017-10-10" >~<input id="d_date" name="d_date" type="date" value="2017-10-10">
+    <button type="button" class="btn">검색</button>
+    <button type="button" class="btn" data-toggle="modal" data-target="#patient_search">환자접수</button>
+    
+
+    <!-- div margin 넣어서 간격 조절 -->
+
+
+
+    <br>검색결과 입니다.<br>
+    <hr align="left" style="border:solid 1px;">
+    청구기간 : 2017-10-01 ~ 2017-10-31
+
+    </div>
+    <div id="right"  style="float:right;width:55%;margin-right:30px">
+        <div id="wrapper" style="border:solid 1px;">
+            <table class="table table-bordered">
+                    
+                <thead>
+                    <tr>
+                    <th>명세서번호</th>
+                    <th>진료일</th>
+                    <th>이름</th>
+                    <th>주민번호</th>
+                    <th>진료의</th>
+                    <th>보험청구액</th>
+                    <th>본인부담금</th>
+                    <th>기간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>000001</td>
+                    <td>2017년 10월 10일</td>
+                    <td>허경영</td>
+                    <td>950513-1111111 </td>
+                    <td>김헌성</td>
+                    <td>11500</td>
+                    <td>1500</td>
+                    <td>~2017-10-31</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div align="right">
+            <button type="button" class="btn" >인쇄</button>
+        </div>
+    </div>
+</body>
+
+</html>
