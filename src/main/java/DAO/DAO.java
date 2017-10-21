@@ -934,7 +934,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_DRUG_BY_PK);
-			pstmt.setInt(number++, dto_DR.DR_ID);
+			pstmt.setInt(number++, DR_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;

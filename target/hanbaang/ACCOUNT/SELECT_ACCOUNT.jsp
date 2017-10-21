@@ -25,7 +25,7 @@
 	while (iterator.hasNext()) {
 		DTO_ACCOUNT outer = iterator.next();
 %>
-{"AC_id" : "<%=outer.AC_id%>", "ID" : "<%=outer.ID%>", "PW" : "<%=outer.PW%>", "HOSPI_NAME" : "<%=outer.HOSPI_NAME%>", "ORG_NUM" : "<%=outer.ORG_NUM%>", "COMP_NUM" : "<%=outer.COMP_NUM%>", "MAIL" : "<%=outer.MAIL%>", "ADDR" : "<%=outer.ADDR%>"}<%=iterator.hasNext() ? "," : ""%>
+{"AC_id" : "<%=outer.AC_id%>", "ID" : "<%=outer.ID%>", "PW" : "<%=outer.PW%>", "HOSPI_NAME" : "<%=outer.HOSPI_NAME%>", "ORG_NUM" : "<%=outer.ORG_NUM%>", "COMP_NUM" : "<%=outer.COMP_NUM%>", "MAIL" : "<%=outer.MAIL%>", "ADDR" : "<%=outer.ADDR%>", "ADDR_DETAIL" : "<%=outer.ADDR_DETAIL%>", "REG_DATE" : "<%=outer.REG_DATE%>", "MOD_DATE" : "<%=outer.MOD_DATE%>"}<%=iterator.hasNext() ? "," : ""%>
 <%
 	}
 %>

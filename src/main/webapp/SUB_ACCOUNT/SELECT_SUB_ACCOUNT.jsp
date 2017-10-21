@@ -25,7 +25,7 @@
 	while (iterator.hasNext()) {
 		DTO_SUB_ACCOUNT outer = iterator.next();
 %>
-{"SA_id" : "<%=outer.SA_id%>","AC_id" : "<%=outer.AC_id%>", "ID" : "<%=outer.ID%>", "PW" : "<%=outer.PW%>", "STAFF_NAME" : "<%=outer.STAFF_NAME%>", "ORG_NUM" : "<%=outer.ORG_NUM%>", "COMP_NUM" : "<%=outer.COMP_NUM%>",  "ADDR" : "<%=outer.ADDR%>""ADDR_DETAIL" : "<%=outer.ADDR_DETAIL%>", "REG_DATE" : "<%=outer.REG_DATE%>", "MOD_DATE" : "<%=outer.MOD_DATE%>"}<%=iterator.hasNext() ? "," : ""%>
+{"SA_id" : "<%=outer.SA_id%>","AC_id" : "<%=outer.AC_id%>", "ID" : "<%=outer.ID%>", "PW" : "<%=outer.PW%>", "STAFF_NAME" : "<%=outer.STAFF_NAME%>", "ORG_NUM" : "<%=outer.ORG_NUM%>", "COMP_NUM" : "<%=outer.COMP_NUM%>",  "ADDR" : "<%=outer.ADDR%>", "ADDR_DETAIL" : "<%=outer.ADDR_DETAIL%>", "REG_DATE" : "<%=outer.REG_DATE%>", "MOD_DATE" : "<%=outer.MOD_DATE%>"}<%=iterator.hasNext() ? "," : ""%>
 <%
 	}
 %>
