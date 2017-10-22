@@ -31,7 +31,7 @@ public class DAO {
 
 	public Boolean INSERT_ACCOUNT(DTO_ACCOUNT dto_ACC, Connection conn) {
 
-		Boolean result;
+
 		PreparedStatement pstmt = null;
 		int number = 1;
 		try {
@@ -443,7 +443,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_PATNT_BY_PK);
-			pstmt.setInt(number++, dto_PA.PA_ID);
+			pstmt.setInt(number++, PA_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -621,7 +621,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_RECEP_BY_PK);
-			pstmt.setInt(number++, dto_R.R_ID);
+			pstmt.setInt(number++, R_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -781,7 +781,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_TREAT_BY_PK);
-			pstmt.setInt(number++, dto_TR.TR_ID);
+			pstmt.setInt(number++, TR_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -1103,7 +1103,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_PRESC_BY_PK);
-			pstmt.setInt(number++, dto_PR.PR_ID);
+			pstmt.setInt(number++, PR_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -1273,7 +1273,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_FREQ_PRESC_BY_PK);
-			pstmt.setInt(number++, dto_FP.FP_ID);
+			pstmt.setInt(number++, FP_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -1430,7 +1430,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_INSUR_BY_PK);
-			pstmt.setInt(number++, dto_IN.IN_ID);
+			pstmt.setInt(number++, IN_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -1616,7 +1616,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_INSUR_DETAIL_BY_PK);
-			pstmt.setInt(number++, dto_ID._ID);
+			pstmt.setInt(number++,_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -1787,7 +1787,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_PHYSIC_BY_PK);
-			pstmt.setInt(number++, dto_PH.PH_ID);
+			pstmt.setInt(number++, PH_ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;

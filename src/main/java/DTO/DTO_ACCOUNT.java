@@ -2,6 +2,7 @@ package DTO;
 
 import java.sql.Date;
 
+
 public class DTO_ACCOUNT {
 	public int AC_id;
 	public String ID;

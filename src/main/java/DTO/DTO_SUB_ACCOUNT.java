@@ -12,9 +12,10 @@ public class DTO_SUB_ACCOUNT {
 	public String PHONE;
 	public String ORG_NUM;
 	public String COMP_NUM;
+	public String MAIL;
 	public String ADDR;
 	public String ADDR_DETAIL;
-	public String MAIL;
+
 	public Date REG_DATE;
 	public Date MOD_DATE;
 	
@@ -23,7 +24,7 @@ public class DTO_SUB_ACCOUNT {
 	}
 	
 	public DTO_SUB_ACCOUNT(int sA_id, int aC_id, String iD, String pW, String sTAFF_NAME, String pHONE, String oRG_NUM,
-			String cOMP_NUM, String aDDR, String aDDR_DETAIL, String mAIL, Date rEG_DATE, Date mOD_DATE) {
+			String cOMP_NUM, String mAIL, String aDDR, String aDDR_DETAIL,  Date rEG_DATE, Date mOD_DATE) {
 		super();
 		SA_id = sA_id;
 		AC_id = aC_id;
