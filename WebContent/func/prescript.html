@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>한방애</title>
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../js/ajax.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#header").load("../include/header_doc.html");
+   
+});
+$(function(){
+    $("#body").bind("click",function () {
+        $("#imageInput").attr('src','../../images/human.jpg');
+    })
+    $("#hand").click(function () {
+        $("#imageInput").attr('src','../../images/hand.jpg');
+    })
+    $("#foot").click(function () {
+        $("#imageInput").attr('src','../../images/foot.jpg');
+    })
+});
+</script>
+<style type="text/css">
+    #left {
+        float:left;
+        width:32%;
+        margin:6px;
+        height:70%;
+
+    }
+    
+    tr{
+        height:"50px";
+    }
+    #imageInput{
+        position:absolute; 
+        z-index:-1;
+    }
+    html,body,#container{
+        height:100%;
+    }
+    #prev,#next{
+        margin:10px;
+    }
+</style>
+
+</head>
+    <div id="header"></div>
+    <!-- header include -->
+<body>
+    <div id="container">
+        <div id="left"> 
+            <h3>환자정보</h3>
+            <hr align="left" style="border:solid 1px;">
+            <div class="container1">
+                <table width="100%" >
+                    <tbody>
+                    <tr>
+                        <td>접수번호</td>
+                        <td>100001</td>
+                        <td>생년월일</td>
+                        <td>1995년 05월 13일</td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td>허경영</td>
+                        <td>휴대폰 번호</td>
+                        <td>010-0000-0001</td>
+                    </tr>
+                    <tr>
+                        <td>성별</td>
+                        <td>남자</td>
+                        <td>주소</td>
+                        <td>서울특별시 테헤란로 311 7층</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr align="left" style="border:solid 1px;">
+            
+            
+            <div class="container3">
+                    <h3>특이사항</h3>
+                    <form>
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" rows="10" id="comment"></textarea>
+                    </div>
+                    </form>
+            </div>
+        </div>
+        <div id="left">
+            
+            <div>
+                <h3>처방</h3>
+                <hr align="left" style="border:solid 1px;"> 
+                <!-- 처방명 약재 첩수 팩수 물용량 등등 입력 -->
+
+                <table class="table table-bordered">
+                        <!-- <div style="overflow:scroll; height: 100px"> scrollbar-->
+                <thead>
+                    <tr>
+                    <th>약재</th>
+                    <th>제조회사명</th>
+                    <th>중량</th>
+
+                    </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>녹용</td>
+                            <td>경방신약</td>
+                            <td></td><!-- 버튼이 들어가야함! -->
+                        </tr>
+                        <!-- collapse사용할것 -->
+                        <tr>
+                            <td>당귀</td>
+                            <td>한국신택스제약</td>
+                            <td></td><!-- 버튼이 들어가야함! -->
+                        </tr>
+                        <tr>
+                        <th colspan="3"> 
+                            <div align="center"><button type="button" class="btn">+</button></div>
+                            </th>
+                        </tr>
+                    </tbody>  
+                </table>
+            </div>
+            
+        </div>
+        <div id="left">
+            <!-- style="float:right;width:32%;padding:10px;height:100%;"> -->
+                <h3>진료기록</h3>
+                <hr align="left" style="border:solid 1px;">
+                <!-- 이미지 위에 라디오버튼 추가하는 부분 -->
+            <!-- <input type="radio" id="abc" name="address"style="background-image:url(../../images/hand.jpg)"/>
+            <label for="abc"></label>
+            <input type="image" src="" style="float:right"> -->
+
+            <!-- 체크박스선택에 따라 손,발,몸 이미지 보여주기 ajax -->
+            <div style="float:left;">
+                <button type="button" class="btn" id="body">몸</button>
+                <button type="button" class="btn" id="hand">손</button>
+                <button type="button" class="btn" id="foot">발</button>
+                <img id="imageInput" src="../../images/human.jpg" width="500px" height="500px">
+            </div>
+            <div id="checkboxes" style="float:left;">
+                    <input type="checkbox" value="">침
+                    <input type="checkbox" value="">뜸
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div id="footerBtn" align="center">
+        <button type="button" class="btn" id="prev">이전</button>
+        <button type="button" class="btn" id="next">다음</button>
+    </div>
+</body>
+</html>

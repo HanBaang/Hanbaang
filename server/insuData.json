@@ -1,0 +1,33 @@
+{
+	"obj": [{
+			"R_id": "00002",
+			"REG_DATE": "2017년 10월 10일",
+			"PATNT_NAME": "허경영",
+			"H_INSUR_NUM": "950513-1111111",
+			"DOC": "김헌성",
+			"INSUR_CHARGE": "11500",
+			"PATNT_CHARGE": "1500",
+			"DUE": "2017년 10월 31일"
+		},
+		{
+			"R_id": "00003",
+			"REG_DATE": "2017년 10월 11일",
+			"PATNT_NAME": "허경영",
+			"H_INSUR_NUM": "950513-1111111",
+			"DOC": "김헌성",
+			"INSUR_CHARGE": "15700",
+			"PATNT_CHARGE": "2000",
+			"DUE": "2017년 10월 31일"
+		},
+		{
+			"R_id": "00004",
+			"REG_DATE": "2017년 10월 12일",
+			"PATNT_NAME": "허경영",
+			"H_INSUR_NUM": "950513-1111111",
+			"DOC": "김헌성",
+			"INSUR_CHARGE": "11500",
+			"PATNT_CHARGE": "1500",
+			"DUE": "2017년 10월 31일"
+		}
+	]
+}
