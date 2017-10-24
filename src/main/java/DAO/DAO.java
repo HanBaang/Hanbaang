@@ -124,7 +124,6 @@ public class DAO {
 				number = 1;
 				DTO_ACCOUNT dto_ACC = new DTO_ACCOUNT();
 				dto_ACC.AC_id = rs.getInt(number++);
-				System.out.println(dto_ACC.AC_id);
 				dto_ACC.ID = rs.getString(number++);
 				dto_ACC.PW = rs.getString(number++);
 				dto_ACC.HOSPI_NAME = rs.getString(number++);

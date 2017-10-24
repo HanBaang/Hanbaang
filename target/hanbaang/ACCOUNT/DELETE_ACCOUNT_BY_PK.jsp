@@ -13,7 +13,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%	
-	String AC_id = request.getParameter("AC_id");
+	String AC_id = request.getParameter("AC_ID");
 	Connection conn = DBConnection.getConnection();
 	DAO dao = DAO.getInstance();
 	DTO_ACCOUNT dto_ACC = new DTO_ACCOUNT();
