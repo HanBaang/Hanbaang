@@ -9,7 +9,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class DBConnection {
-	static DBTerminalHandler dbTerminalHandler;
 	static Connection conn;
 	public static Connection getConnection() throws SQLException, NamingException, ClassNotFoundException {
 		Context initCtx = new InitialContext();
@@ -20,9 +19,5 @@ public class DBConnection {
 		return conn;
 	}
 
-	public static DBTerminalHandler getDBTerminalHandler(int timeOut) {
-		
-		return dbTerminalHandler;
-	}
 
 }
