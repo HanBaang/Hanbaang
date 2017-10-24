@@ -26,7 +26,7 @@ public class TestDAO {
 
 	// test 테이블의 레코드를 id를 통해 조회하는 메소드
 	public TestDTO selectTestById(String id) throws SQLException, NamingException, ClassNotFoundException {
-		sql = DefaultValues.SQL_SELECT_TEST_BY_ID;
+		sql = DefaultValue.SQL_SELECT_TEST_BY_ID;
 
 		try {// try 구문 안에 어디서 exeption이 나도 close 작업은 필요하기 때문에 try/finally 로 나누었다.
 			conn = DBConnection.getConnection();
@@ -62,7 +62,7 @@ public class TestDAO {
 
 	
 	public TestDTO selectAccount() throws SQLException, NamingException, ClassNotFoundException {
-		sql = DefaultValues.SQL_SELECT_ACCOUNT;
+		sql = DefaultValue.SQL_SELECT_ACCOUNT;
 		
 		try {// try 구문 안에 어디서 exeption이 나도 close 작업은 필요하기 때문에 try/finally 로 나누었다.
 			conn = DBConnection.getConnection();
