@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>한방애</title>
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../js/ajax.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#header").load("../include/header_doc.html");
+        jQuery(document).ready(function(){
+
+    // This button will increment the value
+    $('.qtyplus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment
+            $('input[name='+fieldName+']').val(currentVal + 5);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(0);
+        }
+    });
+    // This button will decrement the value till 0
+    $(".qtyminus").click(function(e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If it isn't undefined or its greater than 0
+        if (!isNaN(currentVal) && currentVal > 0) {
+            // Decrement one
+            $('input[name='+fieldName+']').val(currentVal - 5);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(0);
+        }
+    });
+});
+
+function callIntake() {
+  location.href = "../func/intake.html";
+}
+});
+</script>
+<style type="text/css">
+    #left {
+        float:left;
+        width:32%;
+        margin:6px;
+        height:100%;
+        /* border:solid 1px; */
+    }
+    tr{
+        height:"50px";
+    }
+    #imageInput{
+        position:absolute; 
+        z-index:-1;
+    }
+    html,body,#container{
+        height:90%;
+    }
+    #prev,#next{
+        margin:10px;
+    }
+    #myform {
+    text-align: center;
+   
+}
+.qty {
+    width: 30px;
+    height: 25px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}
+#manufacture [type=text]{
+    width: 100%;
+
+}
+#manufacture{
+    margin-bottom: 10px;
+}
+#manufacture #m1 {
+    width: 20%;
+    float: left;
+}
+#m1{
+    text-align: center;
+}
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+</style>
+
+</head>
+    <div id="header"></div>
+    <!-- header include -->
+<body>
+    <div id="container">
+        <div id="left"> 
+            <h3>환자정보</h3>
+            <hr align="left" style="border:solid 1px;">
+            <div class="container1">
+                <table width="100%" >
+                    <tbody>
+                    <tr>
+                        <td>접수번호</td>
+                        <td>100001</td>
+                        <td>생년월일</td>
+                        <td>1995년 05월 13일</td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td>허경영</td>
+                        <td>휴대폰 번호</td>
+                        <td>010-0000-0001</td>
+                    </tr>
+                    <tr>
+                        <td>성별</td>
+                        <td>남자</td>
+                        <td>주소</td>
+                        <td>서울특별시 테헤란로 311 7층</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr align="left" style="border:solid 1px;">
+            
+            
+            <div class="container3">
+                    <h3>특이사항</h3>
+                    <form>
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                    </form>
+            </div>
+        </div>
+        <div id="left">
+            <div id="manufacture">
+
+                <div id="m1">
+                        <h4>처방명</h4>
+                        <input type="text" placeholder="십전대보탕">
+                    </div>
+                    <div id="m1">
+                        <h4>첩수</h4>
+                        <input type="text"placeholder="15">
+                    </div>
+                    <div id="m1">
+                            <h4>팩수</h4>
+                        <input type="text"placeholder="30">
+                    </div>
+                    <div id="m1">
+                        <h4>기준용량</h4>
+                        <input type="text"placeholder="20ml">
+                    </div>
+                    <div id="m1">
+                        <h4>물 용량</h4>
+                        <input type="text"placeholder="10ml">
+                    </div>
+                    <hr align="left" style="border:solid 1px;">
+
+            </div>
+            <div style="clear:both;"></div>
+            <div>
+                <h3>약재</h3>
+                <hr align="left" style="border:solid 1px;"> 
+                <!-- 처방명 약재 첩수 팩수 물용량 등등 입력 -->
+
+                <table class="table table-bordered">
+                        <!-- <div style="overflow:scroll; height: 100px"> scrollbar-->
+                <thead>
+                    <tr>
+                    <th>약재</th>
+                    <th>제조회사명</th>
+                    <th>중량</th>
+
+                    </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>녹용</td>
+                            <td>경방신약</td>
+                            <td>
+                                <form id='myform' method='POST' action='#'>
+                                    <input type='button' value='-' class='qtyminus1' field='quantity1' />
+                                    <input type='text' name='quantity' value='0' class='qty' />
+                                    <input type='button' value='+' class='qtyplus1' field='quantity1' /> g
+                                </form>
+                            
+                            </td><!-- 버튼이 들어가야함! -->
+                        </tr>
+                        <!-- collapse사용할것 -->
+                        <tr>
+                            <td>당귀</td>
+                            <td>한국신택스제약</td>
+                            <td>
+                                <form id='myform' method='POST' action='#'>
+                                    <input type='button' value='-' class='qtyminus2' field='quantity2' />
+                                    <input type='text' name='quantity' value='0' class='qty' />
+                                    <input type='button' value='+' class='qtyplus2' field='quantity2' /> g
+                                </form>    
+                                <!-- //qtyminus1에 숫자  -->
+                            </td><!-- 버튼이 들어가야함! -->
+                        </tr>
+                        <tr>
+                        <th colspan="3"> 
+                            <div align="center"><button type="button" class="btn" style="width:100px;">+</button></div>
+                            </th>
+                        </tr>
+                    </tbody>  
+                </table>
+            </div>
+            
+        </div>
+        <div id="left">
+            <!-- style="float:right;width:32%;padding:10px;height:100%;"> -->
+                <h3>처방기록</h3>
+                <hr align="left" style="border:solid 1px;">
+                <table class="table table-bordered">
+                        <!-- <div style="overflow:scroll; height: 100px"> scrollbar-->
+                <thead>
+                    <tr>
+                    <th>방문날짜</th>
+                    <th>처방정보</th>
+                    <th>내용</th>
+                    </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>3주 전</td>
+                            <td>십전대보탕</td>
+                            <td>알레르기 있음</td>
+                        </tr>
+                        <!-- collapse사용할것 -->
+                        <tr>
+                            <td>15일 전</td>
+                            <td>발열</td>
+                            <td>39도까지 올라감</td>
+                        </tr>
+                        <tr>
+                            <td>7일 전</td>
+                            <td>감기</td>
+                            <td>5일간 지속됨</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div id="footerBtn" align="center">
+        <button type="button" class="btn" id="prev">이전</button>
+        <button type="button" class="btn" id="next" onclick="callIntake()">다음</button>
+    </div>
+</body>
+</html>

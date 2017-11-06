@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/ajax.js"></script>
+        <script type="text/javascript" src="./jquery-ui-1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="./imgViewer/src/imgViewer.js"></script>
+
+        <script type="text/javascript" src="./jquery.mousewheel.min.js"></script>
+        <script src="./jquery.fs.zoetrope.min.js"></script>
+        <script src="./hammer.min.js"></script>
+        <script src="./jquery.hammer.js"></script>
+               
+        <script type="text/javascript">
+       
+
+        // (function($) {
+        //         $(document).ready(function(){
+        //             $("#image1").imgViewer();
+        //             $("#image1").imgViewer("option", "zoomStep", 0.05);
+        //             $("#image1").imgViewer("option", "zoomMax", 3);
+        //             $("#image1").imgViewer("option", "zoomable", true);
+                   
+                  
+        //         });
+                
+        //     })(jQuery);
+
+        window.onload = function() {
+            var canvas = document.getElementById("canvas1");
+            var ctx = canvas.getContext("2d");
+            var img = document.getElementById("iamge1");
+            ctx.drawImage(img, 10, 10);
+        };
+
+        </script>
+    </head>
+    <body>
+        <img id="image1" src="../../images/bodyview.jpg" alt="" width="800"/>
+        <p> Click Position <span id="position"> </span></p>
+        
+
+        <canvas id="canvas1" src="../../images/bodyview.jpg" height="500"width="800"></canvas>
+
+    </body>
+</html>

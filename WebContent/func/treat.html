@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>한방애</title>
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../js/ajax.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#header").load("../include/header_doc.html");
+   
+});
+$(function(){
+    $("#body").bind("click",function () {
+        $("#imageInput").attr('src','../../images/human.jpg');
+
+    })
+    $("#hand").click(function () {
+        $("#imageInput").attr('src','../../images/hand.jpg');
+    })
+    $("#foot").click(function () {
+        $("#imageInput").attr('src','../../images/foot.jpg');
+    })
+});
+</script>
+<style type="text/css">
+    #left {
+        float:left;
+        width:31%;
+        margin:10px;
+        height:100%;
+    }
+    tr{
+        height:"50px";
+    }
+    html,body,#container{
+        height:100%;
+        width: 100%;
+    }
+    #selecBtn{
+        float:left;
+        width:40%;
+        margin: 0px;
+    }
+    #checkboxes{
+        width:40%;
+        margin: 0px;
+    }
+</style>
+</head>
+<div id="header"></div>
+<!-- header include -->
+<body>
+    
+    <div id="left"> 
+        <h3>환자정보</h3>
+        <hr align="left" style="border:solid 1px;">
+        <div class="container1">
+            <table width="100%" >
+                <tbody>
+                <tr>
+                    <td>접수번호</td>
+                    <td>100001</td>
+                    <td>생년월일</td>
+                    <td>1995년 05월 13일</td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td>허경영</td>
+                    <td>휴대폰 번호</td>
+                    <td>010-0000-0001</td>
+                </tr>
+                <tr>
+                    <td>성별</td>
+                    <td>남자</td>
+                    <td>주소</td>
+                    <td>서울특별시 테헤란로 311 7층</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr align="left" style="border:solid 1px;">
+        
+        
+        <div class="container3">
+                <h3>특이사항</h3>
+                <form>
+                  <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" rows="10" id="comment"></textarea>
+                  </div>
+                </form>
+        </div>
+    </div>
+    <div id="left">
+            <h3>주치병증</h3>
+            <hr align="left" style="border:solid 1px;">
+            <div class="container2" >
+                    <table class="table table-bordered">
+                            <!-- <div style="overflow:scroll; height: 100px"> scrollbar-->
+                    <thead>
+                        <tr>
+                        <th>병증명</th>
+                        <th>양방명</th>
+                        <th>내용</th>
+                        </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>감기</td>
+                                <td>common cold</td>
+                                <td>계절에 맞지 않는 기운을 외감함으로써 발생한 표증 감기</td>
+                            </tr>
+                            <!-- collapse사용할것 -->
+                            <tr>
+                                <td>피로</td>
+                                <td>fatigue</td>
+                                <td>혈허로 생긴 정신 피로</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div align="center"><button type="button" class="btn" id="addBtn">+</button></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+            <!-- </div> -->
+            </div>
+    </div>
+   
+    <div id="left">
+            <h3>진료기록</h3>
+            <hr align="left" style="border:solid 1px;">
+            <input id="s_date" name="s_date" type="date" value="2017-10-10" >~<input id="d_date" name="d_date" type="date" value="2017-10-10">
+            <button type="button" class="btn">검색</button>    
+            
+            <div class="container2" >
+                    <table class="table">
+                            <!-- <div style="overflow:scroll; height: 100px"> scrollbar-->
+                    <thead>
+                        <tr>
+                        <th>방문날짜</th>
+                        <th>병증명</th>
+                        <th>내용</th>
+                        </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>3주 전</td>
+                                <td>식은땀</td>
+                                <td>4일간 지속됨</td>
+                            </tr>
+                            <!-- collapse사용할것 -->
+                            <tr>
+                                <td>15일 전</td>
+                                <td>발열</td>
+                                <td>39도까지 올라감</td>
+                            </tr>
+                            <tr>
+                                <td>7일 전</td>
+                                <td>감기</td>
+                                <td>5일간 지속됨</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+            <!-- </div> -->
+            </div>
+    </div>
+</div>
+<div style="clear:both;"></div>
+<div id="footerBtn" align="center">
+    <button type="button" class="btn" id="foot">이전</button>
+    <button type="button" class="btn" id="body">다음</button>
+</div>
+    <!-- <div id="left"style="float:left;width:50%">
+        left
+    </div> -->
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>한방애</title>
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../js/ajax.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $("#header").load("../include/header_doc.html");
+
+});
+</script>
+<style>
+    #left{
+        float:left;
+        width:30%;
+        margin:5px;
+    }
+    #result{
+        float:right;
+        width:65%;
+        margin-right:30px;
+    }
+</style>
+</head>
+<div id="header"></div>
+<body >
+    <div id="left">
+    조회기간을 선택하세요<br>
+    <hr align="left" style="border:solid 1px;">
+
+    <input id="s_date" name="s_date" type="date" value="2017-10-01" >~<input id="d_date" name="d_date" type="date" value="2017-10-31">
+    <button type="button" class="btn">검색</button>
+
+    
+
+    <!-- div margin 넣어서 간격 조절 -->
+
+
+
+    <br>검색결과 입니다.<br>
+    <hr align="left" style="border:solid 1px;">
+    청구기간 : 2017-10-01 ~ 2017-10-31
+
+    </div>
+    <div id="result">
+        <div id="wrapper" >
+            <table class="table table-bordered">
+                    
+                <thead>
+                    <tr>
+                    <th>명세서번호</th>
+                    <th>진료일</th>
+                    <th>이름</th>
+                    <th>주민번호</th>
+                    <th>진료의</th>
+                    <th>종류</th>
+                    <th>건보청구액</th>
+                    <th>장애인의료비</th>
+                    <th>지원금</th>
+                    <th>본부금</th>
+                    <th>급여진료비총액</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>000001</td>
+                        <td>2017년 10월 10일</td>
+                        <td>허경영</td>
+                        <td>950513-1111111 </td>
+                        <td>김헌성</td>
+                        <td>보험</td>
+                        <td>11500</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1500</td>
+                        <td>13000</td>
+                    </tr>
+                    <tr>
+                        <td>000002</td>
+                        <td>2017년 10월 12일</td>
+                        <td>김준성</td>
+                        <td>950411-1111111 </td>
+                        <td>김헌성</td>
+                        <td>보험</td>
+                        <td>45600</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>15000</td>
+                        <td>50600</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div align="right">
+            <button type="button" class="btn" >인쇄</button>
+        </div>
+    </div>
+</body>
+
+</html>
