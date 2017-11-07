@@ -13,9 +13,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	LinkedList<DTO_FREQ_PRESC> dto_FP = dao.SELECT_FREQ_PRESC(conn);
+	
+	LinkedList<DTO_FREQ_PRESC> dto_FP = (LinkedList<DTO_FREQ_PRESC>)request.getAttribute("result");
 %>
 
 
@@ -32,5 +31,4 @@
 	]
 }
 <%
-	conn.close();
-%>
+	%>

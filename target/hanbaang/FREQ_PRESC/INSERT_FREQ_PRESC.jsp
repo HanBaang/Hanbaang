@@ -12,22 +12,20 @@
 <%@ page language="java" contentType="text/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%	
-	String FP_id = request.getParameter("FP_id");
+<%
+	Boolean result = (Boolean)request.getAttribute("result");
+	if(result==null)
+		result=false;
 	
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_FREQ_PRESC dto_FP = new DTO_FREQ_PRESC();
-	boolean result = dao.INSERT_FREQ_PRESC(dto_FP, conn);
+	if(result){
+		
+	} else {
+		
 %>
 
-{ "object" : [
-
-{	}
-
-	]
-}
+{ "object" : [ { "result": "<%=result%>" } ] }
 
 <%
-	conn.close();
+	}
+
 %>

@@ -11,10 +11,7 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String AC_ID = request.getParameter("AC_ID");
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_ACCOUNT dto_ACC = dao.SELECT_ACCOUNT_BY_PK(Integer.parseInt(AC_ID), conn);
+	DTO_ACCOUNT dto_ACC = (DTO_ACCOUNT)request.getAttribute("result");
 %>
 
 
@@ -24,6 +21,4 @@
 
 	]
 }
-<%
-	conn.close();
-%>
+

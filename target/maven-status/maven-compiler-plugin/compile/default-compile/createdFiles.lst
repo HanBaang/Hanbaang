@@ -1,10 +1,4 @@
-Data\TestDTO.class
-Data\DefaultValue.class
-Data\TestDAO.class
 DTO\DTO_SUB_ACCOUNT.class
+Data\DefaultValue.class
 hanbaang\DBConnection.class
 DTO\DTO_ACCOUNT.class
-hanbaang\JSONTest.class
-hanbaang\example.class
-hanbaang\DBTerminalHandler.class
-hanbaang\Test.class

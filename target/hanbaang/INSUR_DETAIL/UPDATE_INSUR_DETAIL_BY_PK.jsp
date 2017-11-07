@@ -11,19 +11,19 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_INSUR_DETAIL dto_IN = new DTO_INSUR_DETAIL();
-	boolean result = dao.UPDATE_INSUR_DETAIL_BY_PK(dto_IN, conn);
+	Boolean result = (Boolean)request.getAttribute("result");
+	if(result==null)
+		result=false;
+	
+	if(result){
+		
+	} else {
+		
 %>
 
+{ "object" : [ { "result": "<%=result%>" } ] }
 
-{ "object" : [
-
-{}
-
-	]
-}
 <%
-	conn.close();
+	}
+
 %>

@@ -11,12 +11,7 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String SA_id = request.getParameter("SA_id");
-
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_SUB_ACCOUNT dto_SA = new DTO_SUB_ACCOUNT();
-	dto_SA = dao.SELECT_SUB_ACCOUNT_BY_PK(Integer.parseInt(SA_id), conn);
+	DTO_SUB_ACCOUNT dto_SA = (DTO_SUB_ACCOUNT)request.getAttribute("result");
 %>
 
 
@@ -27,5 +22,5 @@
 	]
 }
 <%
-	conn.close();
+	
 %>

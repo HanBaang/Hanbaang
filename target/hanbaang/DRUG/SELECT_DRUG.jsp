@@ -13,9 +13,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	LinkedList<DTO_DRUG> dto_DR = dao.SELECT_DRUG(conn);
+	
+	LinkedList<DTO_DRUG> dto_DR = (LinkedList<DTO_DRUG>)request.getAttribute("result");
 %>
 
 
@@ -32,5 +31,5 @@
 	]
 }
 <%
-	conn.close();
+	
 %>

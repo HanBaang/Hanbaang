@@ -12,22 +12,19 @@
 <%@ page language="java" contentType="text/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%	
-	String IN_id = request.getParameter("IN_id");
-	
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_INSUR dto_IN = new DTO_INSUR();
-	boolean result = dao.INSERT_INSUR(dto_IN, conn);
-%>
-
-{ "object" : [
-
-{	}
-
-	]
-}
 
 <%
-	conn.close();
+	Boolean result = (Boolean) request.getAttribute("result");
+	if (result == null)
+		result = false;
+
+	if (result) {
+
+	} else {
+%>
+
+{ "object" : [ { "result": "<%=result%>" } ] }
+
+<%
+	}
 %>

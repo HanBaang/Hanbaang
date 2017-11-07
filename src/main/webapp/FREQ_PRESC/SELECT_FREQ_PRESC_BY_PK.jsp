@@ -11,11 +11,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String FP_ID =request.getParameter("FP_id");
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_FREQ_PRESC dto_PR = dao.SELECT_FREQ_PRESC_BY_PK(Integer.parseInt(FP_ID), conn);
-%>
+	DTO_FREQ_PRESC dto_PR = (DTO_FREQ_PRESC)request.getAttribute("result");
+	%>
 
 
 { "object" : [
@@ -25,5 +22,5 @@
 	]
 }
 <%
-	conn.close();
+	
 %>

@@ -11,12 +11,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String PH_ID = request.getParameter("PH_ID");
 	
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_PHYSIC dto_PH = dao.SELECT_PHYSIC_BY_PK(Integer.parseInt(PH_ID), conn);
-%>
+	DTO_PHYSIC dto_PH = (DTO_PHYSIC)request.getAttribute("result");%>
 
 
 { "object" : [
@@ -25,6 +21,4 @@
 
 	]
 }
-<%
-	conn.close();
-%>
+

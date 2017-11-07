@@ -11,19 +11,12 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_TREAT dto_TR = new DTO_TREAT();
-	boolean result = dao.UPDATE_TREAT_BY_PK(dto_TR, conn);
+	boolean result = (Boolean) request.getAttribute("result");
 %>
 
 
-{ "object" : [
-
-{}
-
-	]
-}
+{ "object" : [ { "result" : "<%=result%>" } ] }
 <%
-	conn.close();
+	
 %>
+

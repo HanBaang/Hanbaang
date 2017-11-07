@@ -4,26 +4,25 @@
 <%@page import="DAO.*"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.LinkedList"%>
-
+<%@page import="java.text.SimpleDateFormat"%>
 
 <%@ page language="java" contentType="text/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_INSUR dto_IN = new DTO_INSUR();
-	boolean result = dao.UPDATE_INSUR_BY_PK(dto_IN, conn);
+
+Boolean result = (Boolean) request.getAttribute("result");
+if (result == null)
+	result = false;
+
+if (result) {
+
+} else {
 %>
 
 
-{ "object" : [
-
-{}
-
-	]
-}
+{ "object" : [ {} ] }
 <%
-	conn.close();
+}
 %>

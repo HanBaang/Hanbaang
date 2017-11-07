@@ -12,20 +12,20 @@
 <%@ page language="java" contentType="text/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%	
-	String PA_id = request.getParameter("PA_id");
-
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_PATNT dto_PA = new DTO_PATNT();
-	boolean result = dao.DELETE_PATNT_BY_PK(Integer.parseInt(PA_id), conn);
-%>
-{ "object" : [
-
-{
-}
-	]
-}
 <%
-	conn.close();
+	Boolean result = (Boolean)request.getAttribute("result");
+	if(result==null)
+		result=false;
+	
+	if(result){
+		
+	} else {
+		
+%>
+
+{ "object" : [ { "result": "<%=result%>" } ] }
+
+<%
+	}
+
 %>

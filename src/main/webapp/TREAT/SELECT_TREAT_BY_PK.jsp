@@ -11,12 +11,7 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String TR_ID = request.getParameter("TR_ID");
-	
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_TREAT dto_TR = dao.SELECT_TREAT_BY_PK(Integer.parseInt(TR_ID), conn);
-%>
+	DTO_TREAT dto_TR = (DTO_TREAT)request.getAttribute("result");%>
 
 
 { "object" : [
@@ -25,6 +20,3 @@
 
 	]
 }
-<%
-	conn.close();
-%>

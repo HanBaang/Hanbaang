@@ -12,12 +12,15 @@
 <%@ page language="java" contentType="text/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%	
-	String AC_id = request.getParameter("AC_ID");
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_ACCOUNT dto_ACC = new DTO_ACCOUNT();
-	boolean result = dao.DELETE_ACCOUNT_BY_PK(Integer.parseInt(AC_id), conn);
+<%
+	Boolean result = (Boolean)request.getAttribute("result");
+	if(result==null)
+		result=false;
+	
+	if(result){
+		
+	} else {
+		
 %>
 { "object" : [
 
@@ -25,5 +28,6 @@
 	]
 }
 <%
-	conn.close();
+	}
+
 %>
