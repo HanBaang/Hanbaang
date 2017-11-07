@@ -11,11 +11,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String ID_id = request.getParameter("ID_id");
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_INSUR_DETAIL dto_ID = dao.SELECT_INSUR_DETAIL_BY_PK(Integer.parseInt(ID_id), conn);
-%>
+	DTO_INSUR_DETAIL dto_ID = (DTO_INSUR_DETAIL)request.getAttribute("result");
+	%>
 
 
 { "object" : [
@@ -24,5 +21,5 @@
 	]
 }
 <%
-	conn.close();
+	
 %>

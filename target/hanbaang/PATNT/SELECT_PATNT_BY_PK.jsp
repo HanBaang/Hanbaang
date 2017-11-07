@@ -11,11 +11,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String PA_ID = request.getParameter("PA_ID");
 	
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_PATNT dto_PA = dao.SELECT_PATNT_BY_PK(Integer.parseInt(PA_ID), conn);
+	DTO_PATNT dto_PA = (DTO_PATNT)request.getAttribute("result");
 %>
 
 
@@ -25,6 +22,3 @@
 
 	]
 }
-<%
-	conn.close();
-%>

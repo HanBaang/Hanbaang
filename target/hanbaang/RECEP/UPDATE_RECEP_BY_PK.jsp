@@ -11,19 +11,15 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_RECEP dto_R = new DTO_RECEP();
-	boolean result = dao.UPDATE_RECEP_BY_PK(dto_R, conn);
+	Boolean result = (Boolean) request.getAttribute("result");
+	if (result == null)
+		result = false;
+
+	if (result) {
+
+	} else {
 %>
-
-
-{ "object" : [
-
-{}
-
-	]
-}
+{ "object" : [ { } ] }
 <%
-	conn.close();
+	}
 %>

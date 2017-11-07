@@ -11,16 +11,17 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	
-	Boolean result = (Boolean)request.getAttribute("result");
+	Boolean result = (Boolean) request.getAttribute("result");
+	if (result == null)
+		result = false;
+
+	if (result) {
+
+	} else {
 %>
 
-{ "object" : [
+{ "object" : [ { "result": "<%=result%>" } ] }
 
-{}
-
-	]
-}
 <%
-	
+	}
 %>

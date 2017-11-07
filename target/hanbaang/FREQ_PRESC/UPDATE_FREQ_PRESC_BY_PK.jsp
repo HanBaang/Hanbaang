@@ -11,19 +11,17 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_FREQ_PRESC dto_FP = new DTO_FREQ_PRESC();
-	boolean result = dao.UPDATE_FREQ_PRESC_BY_PK(dto_FP, conn);
+	Boolean result = (Boolean) request.getAttribute("result");
+	if (result == null)
+		result = false;
+
+	if (result) {
+
+	} else {
 %>
 
+{ "object" : [ { "result": "<%=result%>" } ] }
 
-{ "object" : [
-
-{}
-
-	]
-}
 <%
-	conn.close();
+	}
 %>

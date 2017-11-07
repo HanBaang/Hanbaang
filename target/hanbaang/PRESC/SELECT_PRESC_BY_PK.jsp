@@ -11,11 +11,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String PR_id = request.getParameter("PR_id");
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_PRESC dto_PR = dao.SELECT_PRESC_BY_PK(Integer.parseInt(PR_id), conn);
-%>
+	
+	DTO_PRESC dto_PR = (DTO_PRESC)request.getAttribute("result");%>
 
 
 { "object" : [
@@ -25,5 +22,5 @@
 	]
 }
 <%
-	conn.close();
+	
 %>

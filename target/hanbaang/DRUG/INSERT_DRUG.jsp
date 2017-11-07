@@ -21,7 +21,7 @@
 	} else {
 %>
 
-{ "object" : [ { } ] }
+{ "object" : [ { "result": "<%=result%>" } ] }
 
 <%
 	}

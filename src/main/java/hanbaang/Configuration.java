@@ -60,18 +60,6 @@ public class Configuration implements ServletContextListener {
 		action = new FreqPrescAction("/FREQ_PRESC/UPDATE_FREQ_PRESC_BY_PK.jsp", 5);
 		actions.put("/UPDATE_FREQ_PRESC_BY_PK.hb", action);
 
-		// SUB ACCOUNT TABLE ACTION
-		action = new SubAccAction("/SUB_ACCOUNT/DELETE_SUB_ACCOUNT_BY_PK.jsp", 1);
-		actions.put("/DELETE_SUB_ACCOUNT_BY_PK.hb", action);
-		action = new SubAccAction("/SUB_ACCOUNT/INSERT_SUB_ACCOUNT.jsp", 2);
-		actions.put("/INSERT_SUB_ACCOUNT.hb", action);
-		action = new SubAccAction("/SUB_ACCOUNT/SELECT_SUB_ACCOUNT_BY_PK.jsp", 3);
-		actions.put("/SELECT_SUB_ACCOUNT_BY_PK.hb", action);
-		action = new SubAccAction("/SUB_ACCOUNT/SELECT_SUB_ACCOUNT.jsp", 4);
-		actions.put("/SELECT_SUB_ACCOUNT.hb", action);
-		action = new SubAccAction("/SUB_ACCOUNT/UPDATE_SUB_ACCOUNT_BY_PK.jsp", 5);
-		actions.put("/UPDATE_SUB_ACCOUNT_BY_PK.hb", action);
-
 		// INSUR TABLE ACTION
 		action = new InsurAction("/INSUR/DELETE_INSUR_BY_PK.jsp", 1);
 		actions.put("/DELETE_INSUR_BY_PK.hb", action);
@@ -96,7 +84,6 @@ public class Configuration implements ServletContextListener {
 		action = new InsurDetailAction("/INSUR/UPDATE_INSUR_DETAIL_BY_PK.jsp", 5);
 		actions.put("/UPDATE_INSUR_DETAIL_BY_PK.hb", action);
 
-		
 		// PATNT TABLE ACTION
 		action = new PatntAction("/PATNT/DELETE_PATNT_BY_PK.jsp", 1);
 		actions.put("/DELETE_PATNT_BY_PK.hb", action);
@@ -108,6 +95,67 @@ public class Configuration implements ServletContextListener {
 		actions.put("/SELECT_PATNT.hb", action);
 		action = new PatntAction("/PATNT/UPDATE_PATNT_BY_PK.jsp", 5);
 		actions.put("/UPDATE_PATNT_BY_PK.hb", action);
+
+		// PHYSIC TABLE ACTION
+		action = new PhysicAction("/PHYSIC/DELETE_PHYSIC_BY_PK.jsp", 1);
+		actions.put("/DELETE_PHYSIC_BY_PK.hb", action);
+		action = new PhysicAction("/PHYSIC/INSERT_PHYSIC.jsp", 2);
+		actions.put("/INSERT_PHYSIC.hb", action);
+		action = new PhysicAction("/PHYSIC/SELECT_PHYSIC_BY_PK.jsp", 3);
+		actions.put("/SELECT_PHYSIC_BY_PK.hb", action);
+		action = new PhysicAction("/PHYSIC/SELECT_PHYSIC.jsp", 4);
+		actions.put("/SELECT_PHYSIC.hb", action);
+		action = new PhysicAction("/PHYSIC/UPDATE_PHYSIC_BY_PK.jsp", 5);
+		actions.put("/UPDATE_PHYSIC_BY_PK.hb", action);
+
+		// PRESC TABLE ACTION
+		action = new PrescAction("/PRESC/DELETE_PRESC_BY_PK.jsp", 1);
+		actions.put("/DELETE_PRESC_BY_PK.hb", action);
+		action = new PrescAction("/PRESC/INSERT_PRESC.jsp", 2);
+		actions.put("/INSERT_PRESC.hb", action);
+		action = new PrescAction("/PRESC/SELECT_PRESC_BY_PK.jsp", 3);
+		actions.put("/SELECT_PRESC_BY_PK.hb", action);
+		action = new PrescAction("/PRESC/SELECT_PRESC.jsp", 4);
+		actions.put("/SELECT_PRESC.hb", action);
+		action = new PrescAction("/PRESC/UPDATE_PRESC_BY_PK.jsp", 5);
+		actions.put("/UPDATE_PRESC_BY_PK.hb", action);
+
+		// RECEP TABLE ACTION
+		action = new RecepAction("/RECEP/DELETE_RECEP_BY_PK.jsp", 1);
+		actions.put("/DELETE_RECEP_BY_PK.hb", action);
+		action = new RecepAction("/RECEP/INSERT_RECEP.jsp", 2);
+		actions.put("/INSERT_RECEP.hb", action);
+		action = new RecepAction("/RECEP/SELECT_RECEP_BY_PK.jsp", 3);
+		actions.put("/SELECT_RECEP_BY_PK.hb", action);
+		action = new RecepAction("/RECEP/SELECT_RECEP.jsp", 4);
+		actions.put("/SELECT_RECEP.hb", action);
+		action = new RecepAction("/RECEP/UPDATE_RECEP_BY_PK.jsp", 5);
+		actions.put("/UPDATE_RECEP_BY_PK.hb", action);
+
+		// SUB ACCOUNT TABLE ACTION
+		action = new SubAccAction("/SUB_ACCOUNT/DELETE_SUB_ACCOUNT_BY_PK.jsp", 1);
+		actions.put("/DELETE_SUB_ACCOUNT_BY_PK.hb", action);
+		action = new SubAccAction("/SUB_ACCOUNT/INSERT_SUB_ACCOUNT.jsp", 2);
+		actions.put("/INSERT_SUB_ACCOUNT.hb", action);
+		action = new SubAccAction("/SUB_ACCOUNT/SELECT_SUB_ACCOUNT_BY_PK.jsp", 3);
+		actions.put("/SELECT_SUB_ACCOUNT_BY_PK.hb", action);
+		action = new SubAccAction("/SUB_ACCOUNT/SELECT_SUB_ACCOUNT.jsp", 4);
+		actions.put("/SELECT_SUB_ACCOUNT.hb", action);
+		action = new SubAccAction("/SUB_ACCOUNT/UPDATE_SUB_ACCOUNT_BY_PK.jsp", 5);
+		actions.put("/UPDATE_SUB_ACCOUNT_BY_PK.hb", action);
+
+		// TREAT TABLE ACTION
+		action = new RecepAction("/TREAT/DELETE_TREAT_BY_PK.jsp", 1);
+		actions.put("/DELETE_TREAT_BY_PK.hb", action);
+		action = new RecepAction("/TREAT/INSERT_TREAT.jsp", 2);
+		actions.put("/INSERT_TREAT.hb", action);
+		action = new RecepAction("/TREAT/SELECT_TREAT_BY_PK.jsp", 3);
+		actions.put("/SELECT_TREAT_BY_PK.hb", action);
+		action = new RecepAction("/TREAT/SELECT_TREAT.jsp", 4);
+		actions.put("/SELECT_TREAT.hb", action);
+		action = new RecepAction("/TREAT/UPDATE_TREAT_BY_PK.jsp", 5);
+		actions.put("/UPDATE_TREAT_BY_PK.hb", action);
+
 	}
 
 }

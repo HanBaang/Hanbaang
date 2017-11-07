@@ -11,12 +11,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String R_ID = request.getParameter("R_ID");
 	
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_RECEP dto_R = dao.SELECT_RECEP_BY_PK(Integer.parseInt(R_ID), conn);
-%>
+	DTO_RECEP dto_R = (DTO_RECEP)request.getAttribute("result");%>
 
 
 { "object" : [
@@ -25,6 +21,4 @@
 
 	]
 }
-<%
-	conn.close();
-%>
+
