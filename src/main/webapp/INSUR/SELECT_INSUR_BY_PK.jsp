@@ -11,10 +11,8 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String IN_id = request.getParameter("IN_id");
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_INSUR dto_IN = dao.SELECT_INSUR_BY_PK(Integer.parseInt(IN_id), conn);
+	
+	DTO_INSUR dto_IN = (DTO_INSUR)request.getAttribute("result");
 %>
 
 
@@ -25,5 +23,5 @@
 	]
 }
 <%
-	conn.close();
+	
 %>

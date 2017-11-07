@@ -13,9 +13,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	LinkedList<DTO_SUB_ACCOUNT> dto_SA = dao.SELECT_SUB_ACCOUNT(conn);
+LinkedList<DTO_SUB_ACCOUNT> dto_SA=(LinkedList<DTO_SUB_ACCOUNT>)request.getAttribute("result");
 %>
 
 
@@ -32,5 +30,5 @@
 	]
 }
 <%
-	conn.close();
+
 %>

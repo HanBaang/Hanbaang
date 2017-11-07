@@ -12,19 +12,16 @@
 <%@ page language="java" contentType="text/json; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%	
-	String SA_id = request.getParameter("SA_id");
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_SUB_ACCOUNT dto_SA = new DTO_SUB_ACCOUNT();
-	boolean result = dao.DELETE_SUB_ACCOUNT_BY_PK(Integer.parseInt(SA_id), conn);
-%>
-{ "object" : [
-
-{"SA_id" : "<%=dto_SA.SA_id%>","AC_id" : "<%=dto_SA.AC_id%>", "ID" : "<%=dto_SA.ID%>", "PW" : "<%=dto_SA.PW%>", "STAFF_NAME" : "<%=dto_SA.STAFF_NAME%>", "ORG_NUM" : "<%=dto_SA.ORG_NUM%>", "COMP_NUM" : "<%=dto_SA.COMP_NUM%>",  "ADDR" : "<%=dto_SA.ADDR%>"C
-
-	]
-}
 <%
-	conn.close();
+	Boolean result = (Boolean) request.getAttribute("result");
+	if (result == null)
+		result = false;
+
+	if (result) {
+
+	} else {
+%>
+{ "object" : [ { } ] }
+<%
+	}
 %>

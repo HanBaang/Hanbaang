@@ -4,6 +4,18 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  	<listener>
+ 		<listener-class>hanbaang.Configuration</listener-class>
+ 	</listener>
+  	<servlet>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>hanbaang.Controller</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>*.hb</url-pattern>
+    </servlet-mapping>
   <resource-ref>
 		<description>Database reference connection</description>
 		<res-ref-name>jdbc/hanbaang</res-ref-name>

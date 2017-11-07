@@ -11,11 +11,7 @@
 <%@ page import="java.sql.*"%>
 
 <%
-	String DR_ID = request.getParameter("DR_ID");
-	
-	Connection conn = DBConnection.getConnection();
-	DAO dao = DAO.getInstance();
-	DTO_DRUG dto_DR = dao.SELECT_DRUG_BY_PK(Integer.parseInt(DR_ID), conn);
+DTO_DRUG dto_DR = (DTO_DRUG)request.getAttribute("result");
 %>
 
 
@@ -26,5 +22,5 @@
 	]
 }
 <%
-	conn.close();
+
 %>
