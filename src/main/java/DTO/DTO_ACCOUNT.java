@@ -2,14 +2,13 @@ package DTO;
 
 import java.sql.Date;
 
-
 public class DTO_ACCOUNT {
 	public int AC_id;
 	public String ID;
 	public String PW;
 	public String HOSPI_NAME;
 	public String ORG_NUM;
-	public String COMP_NUM;
+	public String COMP_NUM; //
 	public String PHONE;
 	public String MAIL;
 	public String ADDR;
@@ -22,10 +21,32 @@ public class DTO_ACCOUNT {
 		super();
 	}
 
+	public DTO_ACCOUNT(String ID, String PW) {
+		super();
+		this.ID = ID;
+		this.PW = PW;
+	}
+
 	public DTO_ACCOUNT(int AC_id, String ID, String PW, String HOSPI_NAME, String ORG_NUM, String COMP_NUM,
 			String PHONE, String MAIL, String ADDR, String ADDR_DETAIL, Date REG_DATE, Date MOD_DATE) {
 		super();
 		this.AC_id = AC_id;
+		this.ID = ID;
+		this.PW = PW;
+		this.HOSPI_NAME = HOSPI_NAME;
+		this.ORG_NUM = ORG_NUM;
+		this.COMP_NUM = COMP_NUM;
+		this.PHONE = PHONE;
+		this.MAIL = MAIL;
+		this.ADDR = ADDR;
+		this.ADDR_DETAIL = ADDR_DETAIL;
+		this.REG_DATE = REG_DATE;
+		this.MOD_DATE = MOD_DATE;
+	}
+
+	public DTO_ACCOUNT(String ID, String PW, String HOSPI_NAME, String ORG_NUM, String COMP_NUM, String PHONE,
+			String MAIL, String ADDR, String ADDR_DETAIL, Date REG_DATE, Date MOD_DATE) {
+		super();
 		this.ID = ID;
 		this.PW = PW;
 		this.HOSPI_NAME = HOSPI_NAME;

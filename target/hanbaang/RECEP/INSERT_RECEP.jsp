@@ -3,7 +3,6 @@
 <%@page import="hanbaang.*"%>
 <%@page import="Data.*"%>
 <%@page import="DAO.*"%>
-<%@page import="org.json.simple.*"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.LinkedList"%>
 

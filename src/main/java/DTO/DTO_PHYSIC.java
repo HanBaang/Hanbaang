@@ -15,6 +15,15 @@ public class DTO_PHYSIC {
 		// TODO Auto-generated constructor stub
 	}
 
+	public DTO_PHYSIC(int pR_ID, int tR_ID, int r_ID, String pH_TYPE, String pART_CODE, boolean iNSUR) {
+		super();
+		PR_ID = pR_ID;
+		TR_ID = tR_ID;
+		R_ID = r_ID;
+		PH_TYPE = pH_TYPE;
+		PART_CODE = pART_CODE;
+		INSUR = iNSUR;
+	}
 	public DTO_PHYSIC(int pH_ID, int pR_ID, int tR_ID, int r_ID, String pH_TYPE, String pART_CODE, boolean iNSUR) {
 		super();
 		PH_ID = pH_ID;

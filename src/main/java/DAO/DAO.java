@@ -21,6 +21,9 @@ public class DAO {
 	static DTO_INSUR dto_IN;
 	static DTO_INSUR_DETAIL dto_ID;
 	static DTO_PHYSIC dto_PH;
+	static DTO_INSUR_DRUG dto_IDR;
+	static DTO_INSUR_PRESC dto_IR;
+	static DTO_CHIM dto_C;
 	private static DAO instance = new DAO();
 
 	public static DAO getInstance() {
@@ -29,14 +32,46 @@ public class DAO {
 
 	// ACCOUNT TABLE SQL
 
-	public Boolean INSERT_ACCOUNT(DTO_ACCOUNT dto_ACC, Connection conn) {
+	public DTO_ACCOUNT LOGIN_ACCOUNT(DTO_ACCOUNT dto_ACC, Connection conn) {
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_LOGIN_ACCOUNT);
+			pstmt.setString(number++, dto_ACC.ID);
+			pstmt.setString(number++, dto_ACC.PW);
+			rs = pstmt.executeQuery();
+			dto_ACC = new DTO_ACCOUNT();
+			if (rs.next()) {
+				dto_ACC.ID = rs.getString(1);
+				dto_ACC.HOSPI_NAME = rs.getString(2);
+				return dto_ACC;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
 
+	public Boolean INSERT_ACCOUNT(DTO_ACCOUNT dto_ACC, Connection conn) {
 
 		PreparedStatement pstmt = null;
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_ACCOUNT);
-			pstmt.setInt(number++, dto_ACC.AC_id);
 			pstmt.setString(number++, dto_ACC.ID);
 			pstmt.setString(number++, dto_ACC.PW);
 			pstmt.setString(number++, dto_ACC.HOSPI_NAME);
@@ -753,7 +788,6 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_TREAT);
-			pstmt.setInt(number++, dto_TR.TR_ID);
 			pstmt.setInt(number++, dto_TR.R_ID);
 			pstmt.setString(number++, dto_TR.SYMP_NAME);
 			pstmt.setString(number++, dto_TR.MEMO);
@@ -901,7 +935,6 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_DRUG);
-			pstmt.setInt(number++, dto_DR.DR_ID);
 			pstmt.setInt(number++, dto_DR.PR_ID);
 			pstmt.setInt(number++, dto_DR.TR_ID);
 			pstmt.setInt(number++, dto_DR.R_ID);
@@ -1006,6 +1039,47 @@ public class DAO {
 				}
 		}
 	}
+	
+	public LinkedList<DTO_DRUG> SELECT_DRUG_BY_FK_PR(int PR_ID, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DTO_DRUG dto_DR = null;
+		LinkedList<DTO_DRUG> result = new LinkedList<>();
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_DRUG_BY_FK_PR);
+			pstmt.setInt(number++, PR_ID);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				number = 1;
+				dto_DR = new DTO_DRUG();
+				dto_DR.DR_ID = rs.getInt(number++);
+				dto_DR.PR_ID = rs.getInt(number++);
+				dto_DR.TR_ID = rs.getInt(number++);
+				dto_DR.R_ID = rs.getInt(number++);
+				dto_DR.DRUG_CODE = rs.getString(number++);
+				dto_DR.DRUG_BRAND = rs.getString(number++);
+				dto_DR.DRUG_WEIGHT = rs.getInt(number++);
+				dto_DR.DRUG_MEMO = rs.getString(number++);
+				result.add(dto_DR);
+			}
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
 
 	public Boolean UPDATE_DRUG_BY_PK(DTO_DRUG dto_DR, Connection conn) {
 		PreparedStatement pstmt = null;
@@ -1067,7 +1141,6 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_PRESC);
-			pstmt.setInt(number++, dto_PR.PR_ID);
 			pstmt.setInt(number++, dto_PR.TR_ID);
 			pstmt.setInt(number++, dto_PR.R_ID);
 			pstmt.setInt(number++, dto_PR.CHUP);
@@ -1391,7 +1464,6 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_INSUR);
-			pstmt.setInt(number++, dto_IN.IN_ID);
 			pstmt.setInt(number++, dto_IN.PR_ID);
 			pstmt.setInt(number++, dto_IN.TR_ID);
 			pstmt.setInt(number++, dto_IN.R_ID);
@@ -1615,7 +1687,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_INSUR_DETAIL_BY_PK);
-			pstmt.setInt(number++,_ID);
+			pstmt.setInt(number++, _ID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				number = 1;
@@ -1755,7 +1827,6 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_PHYSIC);
-			pstmt.setInt(number++, dto_PH.PH_ID);
 			pstmt.setInt(number++, dto_PH.PR_ID);
 			pstmt.setInt(number++, dto_PH.TR_ID);
 			pstmt.setInt(number++, dto_PH.R_ID);
@@ -1893,6 +1964,473 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_DELETE_PHYSIC_BY_PK);
 			pstmt.setInt(number++, PH_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	// INSUR_DRUG TABLE SQL
+
+	public static final Boolean INSERT_INSUR_DRUG(DTO_INSUR_DRUG dto_IDR, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_INSUR_DRUG);
+			pstmt.setString(number++, dto_IDR.IDR_CODE);
+			pstmt.setString(number++, dto_IDR.IDR_NAME);
+			pstmt.setString(number++, dto_IDR.IDR_COMP_NAME);
+			pstmt.setDouble(number++, dto_IDR.IDR_WEIGHT);
+			pstmt.setInt(number++, dto_IDR.IDR_PRICE);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final DTO_INSUR_DRUG SELECT_INSUR_DRUG_BY_PK(int IDR_ID, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DTO_INSUR_DRUG dto_IDR = new DTO_INSUR_DRUG();
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_INSUR_DRUG_BY_PK);
+			pstmt.setInt(number++, dto_IDR.IDR_ID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				number = 1;
+				dto_IDR = new DTO_INSUR_DRUG();
+				dto_IDR.IDR_ID = rs.getInt(number++);
+				dto_IDR.IDR_CODE = rs.getString(number++);
+				dto_IDR.IDR_NAME = rs.getString(number++);
+				dto_IDR.IDR_COMP_NAME = rs.getString(number++);
+				dto_IDR.IDR_WEIGHT = rs.getDouble(number++);
+				dto_IDR.IDR_PRICE = rs.getInt(number++);
+				return dto_IDR;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final LinkedList<DTO_INSUR_DRUG> SELECT_INSUR_DRUG(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		LinkedList<DTO_INSUR_DRUG> result = new LinkedList<>();
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_INSUR_DRUG);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				number = 1;
+				DTO_INSUR_DRUG dto_IDR = new DTO_INSUR_DRUG();
+				dto_IDR.IDR_ID = rs.getInt(number++);
+				dto_IDR.IDR_CODE = rs.getString(number++);
+				dto_IDR.IDR_NAME = rs.getString(number++);
+				dto_IDR.IDR_COMP_NAME = rs.getString(number++);
+				dto_IDR.IDR_WEIGHT = rs.getDouble(number++);
+				dto_IDR.IDR_PRICE = rs.getInt(number++);
+				result.add(dto_IDR);
+			}
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean UPDATE_INSUR_DRUG_BY_PK(DTO_INSUR_DRUG dto_IDR, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_INSUR_DRUG_BY_PK);
+			pstmt.setString(number++, dto_IDR.IDR_CODE);
+			pstmt.setString(number++, dto_IDR.IDR_NAME);
+			pstmt.setString(number++, dto_IDR.IDR_COMP_NAME);
+			pstmt.setDouble(number++, dto_IDR.IDR_WEIGHT);
+			pstmt.setInt(number++, dto_IDR.IDR_PRICE);
+			pstmt.setInt(number++, dto_IDR.IDR_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean DELETE_INSUR_DRUG_BY_PK(DTO_INSUR_DRUG dto_IDR, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_DELETE_INSUR_DRUG_BY_PK);
+			pstmt.setInt(number++, dto_IDR.IDR_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	// INSUR_PRESC TABLE SQL
+
+	public static final Boolean INSERT_INSUR_PRESC(DTO_INSUR_PRESC dto_IP, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_INSUR_PRESC);
+			pstmt.setString(number++, dto_IP.IP_CODE);
+			pstmt.setString(number++, dto_IP.IP_NAME);
+			pstmt.setString(number++, dto_IP.SUB_NAME);
+			pstmt.setString(number++, dto_IP.IP_COMP_NAME);
+			pstmt.setDouble(number++, dto_IP.IP_WEIGHT);
+			pstmt.setInt(number++, dto_IP.IP_PRICE);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final DTO_INSUR_PRESC SELECT_INSUR_PRESC_BY_PK(int IP_ID, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int number = 1;
+		DTO_INSUR_PRESC dto_IP = new DTO_INSUR_PRESC();
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_INSUR_PRESC_BY_PK);
+			pstmt.setInt(number++, dto_IP.IP_ID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				number = 1;
+				dto_IP = new DTO_INSUR_PRESC();
+				dto_IP.IP_ID = rs.getInt(number++);
+				dto_IP.IP_CODE = rs.getString(number++);
+				dto_IP.IP_NAME = rs.getString(number++);
+				dto_IP.SUB_NAME = rs.getString(number++);
+				dto_IP.IP_COMP_NAME = rs.getString(number++);
+				dto_IP.IP_WEIGHT = rs.getDouble(number++);
+				dto_IP.IP_PRICE = rs.getInt(number++);
+				return dto_IP;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final LinkedList<DTO_INSUR_PRESC> SELECT_INSUR_PRESC(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DTO_INSUR_PRESC dto_IP = null;
+		LinkedList<DTO_INSUR_PRESC> result = new LinkedList<>();
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_INSUR_PRESC);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				number = 1;
+				dto_IP = new DTO_INSUR_PRESC();
+				dto_IP.IP_ID = rs.getInt(number++);
+				dto_IP.IP_CODE = rs.getString(number++);
+				dto_IP.IP_NAME = rs.getString(number++);
+				dto_IP.SUB_NAME = rs.getString(number++);
+				dto_IP.IP_COMP_NAME = rs.getString(number++);
+				dto_IP.IP_WEIGHT = rs.getDouble(number++);
+				dto_IP.IP_PRICE = rs.getInt(number++);
+				result.add(dto_IP);
+			}
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean UPDATE_INSUR_PRESC_BY_PK(DTO_INSUR_PRESC dto_IP, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_INSUR_PRESC_BY_PK);
+			pstmt.setString(number++, dto_IP.IP_CODE);
+			pstmt.setString(number++, dto_IP.IP_NAME);
+			pstmt.setString(number++, dto_IP.SUB_NAME);
+			pstmt.setString(number++, dto_IP.IP_COMP_NAME);
+			pstmt.setDouble(number++, dto_IP.IP_WEIGHT);
+			pstmt.setInt(number++, dto_IP.IP_PRICE);
+			pstmt.setInt(number++, dto_IP.IP_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean DELETE_INSUR_PRESC_BY_PK(DTO_INSUR_PRESC dto_IP, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_DELETE_INSUR_PRESC_BY_PK);
+			pstmt.setInt(number++, dto_IP.IP_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	// CHIM TABLE SQL
+	public static final Boolean INSERT_CHIM(DTO_CHIM dto_C, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_CHIM);
+			pstmt.setString(number++, dto_C.CODE);
+			pstmt.setString(number++, dto_C.NAME);
+			pstmt.setString(number++, dto_C.C_NAME);
+			pstmt.setInt(number++, dto_C.PART);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final DTO_CHIM SELECT_CHIM_BY_PK(int CH_ID, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_CHIM_BY_PK);
+			pstmt.setInt(number++, CH_ID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				number = 1;
+				DTO_CHIM dto_C = new DTO_CHIM();
+				dto_C.CH_ID = rs.getInt(number++);
+				dto_C.CODE = rs.getString(number++);
+				dto_C.NAME = rs.getString(number++);
+				dto_C.C_NAME = rs.getString(number++);
+				dto_C.PART = rs.getInt(number++);
+				return dto_C;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final LinkedList<DTO_CHIM> SELECT_CHIM(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		LinkedList<DTO_CHIM> result = new LinkedList<>();
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_CHIM);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				number = 1;
+				DTO_CHIM dto_C = new DTO_CHIM();
+				dto_C.CH_ID = rs.getInt(number++);
+				dto_C.CODE = rs.getString(number++);
+				dto_C.NAME = rs.getString(number++);
+				dto_C.C_NAME = rs.getString(number++);
+				dto_C.PART = rs.getInt(number++);
+				result.add(dto_C);
+			}
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean UPDATE_CHIM_BY_PK(DTO_CHIM dto_C, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_CHIM_BY_PK);
+			pstmt.setString(number++, dto_C.CODE);
+			pstmt.setString(number++, dto_C.NAME);
+			pstmt.setString(number++, dto_C.C_NAME);
+			pstmt.setInt(number++, dto_C.PART);
+			pstmt.setInt(number++, dto_C.CH_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean DELETE_CHIM_BY_PK(DTO_CHIM dto_C, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_DELETE_CHIM_BY_PK);
+			pstmt.setInt(number++, dto_C.CH_ID);
 			if (pstmt.executeUpdate() > 0) {
 				return true;
 			} else {

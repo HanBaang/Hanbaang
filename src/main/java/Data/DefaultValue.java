@@ -5,15 +5,15 @@ public class DefaultValue {
 	public static final int DB_TIMEOUT = 10000;
 
 	// ACCOUNT TABLE
-
-	public static final String SQL_INSERT_ACCOUNT = "Insert Into ACCOUNT(ID,PW,HOSPI_NAME,ORG_NUM,COMP_NUM,PHONE,MAIL,ADDR,ADDR_DETAIL,REG_DATE,MOD_DATE) Values (?,?,?,?,?,?,?,?,?,?,?);";
+	public static final String SQL_LOGIN_ACCOUNT = "Select ID, HOSPI_NAME From ACCOUNT Where ID = ? AND PW = password(?) ";
+	public static final String SQL_INSERT_ACCOUNT = "Insert Into ACCOUNT(ID,PW,HOSPI_NAME,ORG_NUM,COMP_NUM,PHONE,MAIL,ADDR,ADDR_DETAIL,REG_DATE,MOD_DATE) Values (?,password(?),?,?,?,?,?,?,?,?,?);";
 	public static final String SQL_SELECT_ACCOUNT = "Select AC_ID,ID,PW,HOSPI_NAME,ORG_NUM,COMP_NUM,PHONE,MAIL,ADDR,ADDR_DETAIL,REG_DATE,MOD_DATE From ACCOUNT;";
 	public static final String SQL_SELECT_ACCOUNT_BY_PK = "Select AC_ID,ID,PW,HOSPI_NAME,ORG_NUM,COMP_NUM,PHONE,MAIL,ADDR,ADDR_DETAIL,REG_DATE,MOD_DATE From ACCOUNT Where AC_ID=?;";
 	public static final String SQL_UPDATE_ACCOUNT_BY_PK = "Update ACCOUNT Set ID=?, PW=?, HOSPI_NAME=?, ORG_NUM=?, COMP_NUM=?, PHONE=?, MAIL=?, ADDR=?, ADDR_DETAIL=?, REG_DATE=?, MOD_DATE=? Where AC_ID=?;";
 	public static final String SQL_DELETE_ACCOUNT_BY_PK = "Delete From ACCOUNT Where AC_ID=?;";
 
 	// SUB_ACCOUNT TABLE
-	public static final String SQL_INSERT_SUB_ACCOUNT = "Insert Into SUB_ACCOUNT(AC_ID,ID,PW,STAFF_NAME,PHONE,ORG_NUM,COMP_NUM,ADDR,ADDR_DETAIL,MAIL,REG_DATE,MOD_DATE) Values (?,?,?,?,?,?,?,?,?,?,?,?);";
+	public static final String SQL_INSERT_SUB_ACCOUNT = "Insert Into SUB_ACCOUNT(AC_ID,ID,PW,STAFF_NAME,PHONE,ORG_NUM,COMP_NUM,ADDR,ADDR_DETAIL,MAIL,REG_DATE,MOD_DATE) Values (?,password(?),?,?,?,?,?,?,?,?,?,?);";
 	public static final String SQL_SELECT_SUB_ACCOUNT_BY_PK = "Select SA_ID,AC_ID,ID,PW,STAFF_NAME,PHONE,ORG_NUM,COMP_NUM,ADDR,ADDR_DETAIL,MAIL,REG_DATE,MOD_DATE From SUB_ACCOUNT Where SA_ID=?;";
 	public static final String SQL_SELECT_SUB_ACCOUNT = "Select SA_ID,AC_ID,ID,PW,STAFF_NAME,PHONE,ORG_NUM,COMP_NUM,ADDR,ADDR_DETAIL,MAIL,REG_DATE,MOD_DATE From SUB_ACCOUNT;";
 	public static final String SQL_UPDATE_SUB_ACCOUNT_BY_PK = "Update SUB_ACCOUNT Set AC_ID=?, ID=?, PW=?, STAFF_NAME=?, PHONE=?, ORG_NUM=?, COMP_NUM=?, ADDR=?, ADDR_DETAIL=?, MAIL=?, REG_DATE=?, MOD_DATE=? Where SA_ID=?;";
@@ -43,6 +43,7 @@ public class DefaultValue {
 	// DRUG TABLE
 	public static final String SQL_INSERT_DRUG = "Insert Into DRUG(PR_ID,TR_ID,R_ID,DRUG_CODE,DRUG_BRAND,DRUG_WEIGHT,DRUG_MEMO) Values (?,?,?,?,?,?,?);";
 	public static final String SQL_SELECT_DRUG_BY_PK = "Select DR_ID,PR_ID,TR_ID,R_ID,DRUG_CODE,DRUG_BRAND,DRUG_WEIGHT,DRUG_MEMO From DRUG Where DR_ID=?;";
+	public static final String SQL_SELECT_DRUG_BY_FK_PR = "Select DR_ID,PR_ID,TR_ID,R_ID,DRUG_CODE,DRUG_BRAND,DRUG_WEIGHT,DRUG_MEMO From DRUG Where PR_ID=?;";
 	public static final String SQL_SELECT_DRUG = "Select DR_ID,PR_ID,TR_ID,R_ID,DRUG_CODE,DRUG_BRAND,DRUG_WEIGHT,DRUG_MEMO From DRUG;";
 	public static final String SQL_UPDATE_DRUG_BY_PK = "Update DRUG Set PR_ID=?, TR_ID=?, R_ID=?, DRUG_CODE=?, DRUG_BRAND=?, DRUG_WEIGHT=?, DRUG_MEMO=? Where DR_ID=?;";
 	public static final String SQL_DELETE_DRUG_BY_PK = "Delete From DRUG Where DR_ID=?;";
@@ -82,4 +83,24 @@ public class DefaultValue {
 	public static final String SQL_UPDATE_PHYSIC_BY_PK = "Update PHYSIC Set PR_ID=?, TR_ID=?, R_ID=?, PH_TYPE=?, PART_CODE=?, INSUR=? Where PH_ID=?;";
 	public static final String SQL_DELETE_PHYSIC_BY_PK = "Delete From PHYSIC Where PH_ID=?;";
 	
+	//INSUR_DRUG TABLE
+	public static final String SQL_DELETE_INSUR_DRUG_BY_PK = "Delete From INSUR_DRUG Where IDR_ID=?;";
+	public static final String SQL_UPDATE_INSUR_DRUG_BY_PK = "Update INSUR_DRUG Set IDR_CODE=?, IDR_NAME=?, IDR_COMP_NAME=?, IDR_WEIGHT=?, IDR_PRICE=? Where IDR_ID=?;";
+	public static final String SQL_SELECT_INSUR_DRUG = "Select IDR_ID,IDR_CODE,IDR_NAME,IDR_COMP_NAME,IDR_WEIGHT,IDR_PRICE From INSUR_DRUG;";
+	public static final String SQL_SELECT_INSUR_DRUG_BY_PK = "Select IDR_ID,IDR_CODE,IDR_NAME,IDR_COMP_NAME,IDR_WEIGHT,IDR_PRICE From INSUR_DRUG Where IDR_ID=?;";
+	public static final String SQL_INSERT_INSUR_DRUG = "Insert Into INSUR_DRUG(IDR_CODE,IDR_NAME,IDR_COMP_NAME,IDR_WEIGHT,IDR_PRICE) Values (?,?,?,?,?);";
+
+	//INSUR_PRESC TABLE
+	public static final String SQL_DELETE_INSUR_PRESC_BY_PK = "Delete From INSUR_PRESC Where IP_ID=?;";
+	public static final String SQL_UPDATE_INSUR_PRESC_BY_PK = "Update INSUR_PRESC Set IP_CODE=?, IP_NAME=?, SUB_NAME=?, IP_COMP_NAME=?, IP_WEIGHT=?, IP_PRICE=? Where IP_ID=?;";
+	public static final String SQL_SELECT_INSUR_PRESC = "Select IP_ID,IP_CODE,IP_NAME,SUB_NAME,IP_COMP_NAME,IP_WEIGHT,IP_PRICE From INSUR_PRESC;";
+	public static final String SQL_SELECT_INSUR_PRESC_BY_PK = "Select IP_ID,IP_CODE,IP_NAME,SUB_NAME,IP_COMP_NAME,IP_WEIGHT,IP_PRICE From INSUR_PRESC Where IP_ID=?;";
+	public static final String SQL_INSERT_INSUR_PRESC = "Insert Into INSUR_PRESC(IP_CODE,IP_NAME,SUB_NAME,IP_COMP_NAME,IP_WEIGHT,IP_PRICE) Values (?,?,?,?,?,?);";
+	
+	//CHIM TABLE
+	public static final String SQL_DELETE_CHIM_BY_PK = "Delete From CHIM Where CH_ID=?;";
+	public static final String SQL_UPDATE_CHIM_BY_PK = "Update CHIM Set CODE=?, NAME=?, C_NAME=?, PART=? Where CH_ID=?;";
+	public static final String SQL_SELECT_CHIM = "Select CH_ID,CODE,NAME,C_NAME,PART From CHIM;";
+	public static final String SQL_SELECT_CHIM_BY_PK = "Select CH_ID,CODE,NAME,C_NAME,PART From CHIM Where CH_ID=?;";
+	public static final String SQL_INSERT_CHIM = "Insert Into CHIM(CODE,NAME,C_NAME,PART) Values (?,?,?,?);";
 }

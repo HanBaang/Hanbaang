@@ -41,14 +41,13 @@ public class PhysicAction implements Action {
 				request.setAttribute("result", new Boolean(result));
 				break;
 			case CODE_INSERT:
-				String PH_ID_I = request.getParameter("PH_ID");
 				String PR_ID = request.getParameter("PR_ID");
 				String TR_ID = request.getParameter("TR_ID");
 				String R_ID = request.getParameter("R_ID");
 				String PH_TYPE = request.getParameter("PH_TYPE");
 				String PART_CODE = request.getParameter("PART_CODE");
 				String INSUR = request.getParameter("INSUR");
-				dto_PH = new DTO_PHYSIC(Integer.parseInt(PH_ID_I),Integer.parseInt(PR_ID),Integer.parseInt(TR_ID),Integer.parseInt(R_ID),PH_TYPE,PART_CODE,Boolean.valueOf(INSUR));
+				dto_PH = new DTO_PHYSIC(Integer.parseInt(PR_ID),Integer.parseInt(TR_ID),Integer.parseInt(R_ID),PH_TYPE,PART_CODE,Boolean.valueOf(INSUR));
 				result = dao.INSERT_PHYSIC(dto_PH, conn);
 				request.setAttribute("result", new Boolean(result));
 				break;

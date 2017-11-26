@@ -41,7 +41,6 @@ public class PrescAction implements Action {
 			request.setAttribute("result", new Boolean(result));
 			break;
 		case CODE_INSERT:
-			String PR_ID_I = request.getParameter("PR_ID");
 			String TR_ID = request.getParameter("TR_ID");
 			String R_ID = request.getParameter("R_ID");
 			String CHUP = request.getParameter("CHUP");
@@ -56,7 +55,7 @@ public class PrescAction implements Action {
 			String MOD = request.getParameter("MOD_DATE");
 			Date MOD_DATE = new Date(sdf.parse(MOD).getTime());
 			String FREQ = request.getParameter("FREQ");
-			dto_PR = new DTO_PRESC(Integer.parseInt(PR_ID_I), Integer.parseInt(TR_ID), Integer.parseInt(R_ID),
+			dto_PR = new DTO_PRESC(Integer.parseInt(TR_ID), Integer.parseInt(R_ID),
 					Integer.parseInt(CHUP), Integer.parseInt(PACK), Integer.parseInt(STD_VOL),
 					Integer.parseInt(WATER_VOL), Boolean.valueOf(INSUR), REG_DATE, MOD_DATE, Boolean.valueOf(FREQ));
 			result = dao.INSERT_PRESC(dto_PR, conn);

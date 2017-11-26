@@ -18,6 +18,7 @@ public class DrugAction implements Action {
 	public static final int CODE_SELECT_BY = 3;
 	public static final int CODE_SELECT = 4;
 	public static final int CODE_UPDATE = 5;
+	public static final int CODE_SELECT_BY_FK_PR = 6;
 	public String jspPagePath;
 	private int code;
 
@@ -32,17 +33,15 @@ public class DrugAction implements Action {
 		Connection conn = DBConnection.getConnection();
 		DAO dao = DAO.getInstance();
 		DTO_DRUG dto_DR;
-		boolean result;
-		
+		Boolean result;
 		switch(code) {
 			case CODE_DELETE: 
-				String DR_id = request.getParameter("DR_id");
+				String DR_id = request.getParameter("DR_ID");
 				dto_DR = new DTO_DRUG();
 				result = dao.DELETE_DRUG_BY_PK(Integer.parseInt(DR_id), conn);
 				request.setAttribute("result", new Boolean(result));
 				break;
 			case CODE_INSERT:
-				String DR_ID= request.getParameter("DR_ID");
 				String PR_ID = request.getParameter("PR_ID");
 				String TR_ID = request.getParameter("TR_ID");
 				String R_ID = request.getParameter("R_ID");
@@ -52,7 +51,7 @@ public class DrugAction implements Action {
 				String DRUG_MEMO = request.getParameter("DRUG_MEMO");
 				
 				
-				dto_DR = new DTO_DRUG(Integer.parseInt(DR_ID),Integer.parseInt(PR_ID),Integer.parseInt(TR_ID),Integer.parseInt(R_ID),DRUG_CODE,DRUG_BRAND,Integer.parseInt(DRUG_WEIGHT),DRUG_MEMO);
+				dto_DR = new DTO_DRUG(Integer.parseInt(PR_ID),Integer.parseInt(TR_ID),Integer.parseInt(R_ID),DRUG_CODE,DRUG_BRAND,Integer.parseInt(DRUG_WEIGHT),DRUG_MEMO);
 				result = dao.INSERT_DRUG(dto_DR, conn);
 				request.setAttribute("result", new Boolean(result));
 				break;
@@ -78,6 +77,11 @@ public class DrugAction implements Action {
 				dto_DR = new DTO_DRUG(Integer.parseInt(DR_ID_U),Integer.parseInt(PR_ID_U),Integer.parseInt(TR_ID_U),Integer.parseInt(R_ID_U),DRUG_CODE_U,DRUG_BRAND_U,Integer.parseInt(DRUG_WEIGHT_U),DRUG_MEMO_U);
 				result = dao.UPDATE_DRUG_BY_PK(dto_DR, conn);
 				request.setAttribute("result", result);
+				break;
+			case CODE_SELECT_BY_FK_PR:
+				String DR_ID_S_F= request.getParameter("PR_ID");
+				LinkedList<DTO_DRUG> dto_DRL2 = dao.SELECT_DRUG_BY_FK_PR(Integer.parseInt(DR_ID_S_F), conn);
+				request.setAttribute("result", dto_DRL2);			
 				break;
 		}
 		conn.close();
