@@ -43,8 +43,6 @@ public class InsurAction implements Action {
 			break;
 		case CODE_INSERT:
 			String PR_ID = request.getParameter("PR_ID");
-			String TR_ID = request.getParameter("TR_ID");
-			String R_ID = request.getParameter("R_ID");
 			String TD = request.getParameter("TREAT_DATE");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date TREAT_DATE = new Date(sdf.parse(TD).getTime());
@@ -57,10 +55,9 @@ public class InsurAction implements Action {
 			String SUP = request.getParameter("SUP");
 			String PATNT_CHARGE = request.getParameter("PATNT_CHARGE");
 			String TOTAL_CHARGE = request.getParameter("TOTAL_CHARGE");
-			dto_IN = new DTO_INSUR(Integer.parseInt(PR_ID), Integer.parseInt(TR_ID), Integer.parseInt(R_ID), TREAT_DATE,
-					PATNT_NAME, CID, DOC, Boolean.valueOf(INSUR), Integer.parseInt(INSUR_CHARGE),
-					Integer.parseInt(HANDI_CHARGE), Integer.parseInt(SUP), Integer.parseInt(PATNT_CHARGE),
-					Integer.parseInt(TOTAL_CHARGE));
+			dto_IN = new DTO_INSUR(Integer.parseInt(PR_ID), TREAT_DATE, PATNT_NAME, CID, DOC, Boolean.valueOf(INSUR),
+					Integer.parseInt(INSUR_CHARGE), Integer.parseInt(HANDI_CHARGE), Integer.parseInt(SUP),
+					Integer.parseInt(PATNT_CHARGE), Integer.parseInt(TOTAL_CHARGE));
 			result = dao.UPDATE_INSUR_BY_PK(dto_IN, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;
@@ -76,8 +73,7 @@ public class InsurAction implements Action {
 		case CODE_UPDATE:
 			String IN_ID_U = request.getParameter("IN_ID");
 			String PR_ID_U = request.getParameter("PR_ID");
-			String TR_ID_U = request.getParameter("TR_ID");
-			String R_ID_U = request.getParameter("R_ID");
+
 			String TD_U = request.getParameter("TREAT_DATE");
 			SimpleDateFormat sdf_U = new SimpleDateFormat("yyyy-MM-dd");
 			Date TREAT_DATE_U = new Date(sdf_U.parse(TD_U).getTime());
@@ -90,10 +86,10 @@ public class InsurAction implements Action {
 			String SUP_U = request.getParameter("SUP");
 			String PATNT_CHARGE_U = request.getParameter("PATNT_CHARGE");
 			String TOTAL_CHARGE_U = request.getParameter("TOTAL_CHARGE");
-			dto_IN = new DTO_INSUR(Integer.parseInt(IN_ID_U), Integer.parseInt(PR_ID_U), Integer.parseInt(TR_ID_U),
-					Integer.parseInt(R_ID_U), TREAT_DATE_U, PATNT_NAME_U, CID_U, DOC_U, Boolean.valueOf(INSUR_U),
-					Integer.parseInt(INSUR_CHARGE_U), Integer.parseInt(HANDI_CHARGE_U), Integer.parseInt(SUP_U),
-					Integer.parseInt(PATNT_CHARGE_U), Integer.parseInt(TOTAL_CHARGE_U));
+			dto_IN = new DTO_INSUR(Integer.parseInt(IN_ID_U), Integer.parseInt(PR_ID_U), TREAT_DATE_U, PATNT_NAME_U,
+					CID_U, DOC_U, Boolean.valueOf(INSUR_U), Integer.parseInt(INSUR_CHARGE_U),
+					Integer.parseInt(HANDI_CHARGE_U), Integer.parseInt(SUP_U), Integer.parseInt(PATNT_CHARGE_U),
+					Integer.parseInt(TOTAL_CHARGE_U));
 			result = dao.UPDATE_INSUR_BY_PK(dto_IN, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;

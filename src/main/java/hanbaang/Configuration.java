@@ -200,6 +200,18 @@ public class Configuration implements ServletContextListener {
 		actions.put("/SELECT_INSUR_PRESC.hb", action);
 		action = new InsurPrescAction("/INSUR_PRESC/UPDATE_INSUR_PRESC_BY_PK.jsp", 5);
 		actions.put("/UPDATE_INSUR_PRESC_BY_PK.hb", action);
+		
+		// SYMP TABLE ACTION
+		action = new SympAction("/SYMP/DELETE_SYMP_BY_PK.jsp", 1);
+		actions.put("/DELETE_SYMP_BY_PK.hb", action);
+		action = new SympAction("/SYMP/INSERT_SYMP.jsp", 2);
+		actions.put("/INSERT_SYMP.hb", action);
+		action = new SympAction("/SYMP/SELECT_SYMP_BY_PK.jsp", 3);
+		actions.put("/SELECT_SYMP_BY_PK.hb", action);
+		action = new SympAction("/SYMP/SELECT_SYMP.jsp", 4);
+		actions.put("/SELECT_SYMP.hb", action);
+		action = new SympAction("/SYMP/UPDATE_SYMP_BY_PK.jsp", 5);
+		actions.put("/UPDATE_SYMP_BY_PK.hb", action);
 	}
 
 }

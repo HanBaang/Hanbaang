@@ -16,7 +16,7 @@
 
 { "object" : [
 
-{"TR_id" : "<%=dto_TR.TR_ID%>", "R_id" : "<%=dto_TR.R_ID%>", "SYMP_NAME" : "<%=dto_TR.SYMP_NAME%>", "MEMO" : "<%=dto_TR.MEMO%>"}
+{"TR_id" : "<%=dto_TR.TR_ID%>", "R_id" : "<%=dto_TR.R_ID%>", "MEMO" : "<%=dto_TR.MEMO%>"}
 
 	]
 }

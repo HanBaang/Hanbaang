@@ -17,7 +17,7 @@
 
 { "object" : [
 
-{"IN_id" : "<%=dto_ID._ID%>", "PR_id" : "<%=dto_ID.PR_ID%>", "TR_id" : "<%=dto_ID.TR_ID%>", "R_id" : "<%=dto_ID.R_ID%>", "TREAT_NAME" : "<%=dto_ID.TREAT_NAME%>", "TREAT_CODE" : "<%=dto_ID.TREAT_CODE%>", "PART" : "<%=dto_ID.PART%>", "ONCE_DOSE" : "<%=dto_ID.ONCE_DOSE%>", "TOTAL_DOSE" : "<%=dto_ID.TOTAL_DOSE%>", "TOTAL_CHARGE" : "<%=dto_ID.TOTAL_CHARGE%>"}
+{"IN_id" : "<%=dto_ID._ID%>", "TREAT_NAME" : "<%=dto_ID.TREAT_NAME%>", "TREAT_CODE" : "<%=dto_ID.TREAT_CODE%>", "TYPE" : "<%=dto_ID.TYPE%>", "PART" : "<%=dto_ID.PART%>", "ONCE_DOSE" : "<%=dto_ID.ONCE_DOSE%>", "TOTAL_DOSE" : "<%=dto_ID.TOTAL_DOSE%>", "TOTAL_CHARGE" : "<%=dto_ID.TOTAL_CHARGE%>"}
 	]
 }
 <%

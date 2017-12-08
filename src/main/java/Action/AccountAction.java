@@ -24,6 +24,7 @@ public class AccountAction implements Action {
 	public static final int CODE_TEST = 8;
 	public String jspPagePath;
 	private int code;
+	
 
 	public AccountAction(String jspPagePath, int code) {
 		this.jspPagePath = jspPagePath;

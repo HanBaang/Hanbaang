@@ -23,7 +23,7 @@
 	while (iterator.hasNext()) {
 		DTO_TREAT outer = iterator.next();
 %>
-{"TR_id" : "<%=outer.TR_ID%>", "R_id" : "<%=outer.R_ID%>", "SYMP_NAME" : "<%=outer.SYMP_NAME%>", "MEMO" : "<%=outer.MEMO%>"}<%=iterator.hasNext() ? "," : ""%>
+{"TR_id" : "<%=outer.TR_ID%>", "R_id" : "<%=outer.R_ID%>", "MEMO" : "<%=outer.MEMO%>"}<%=iterator.hasNext() ? "," : ""%>
 <%
 	}
 %>

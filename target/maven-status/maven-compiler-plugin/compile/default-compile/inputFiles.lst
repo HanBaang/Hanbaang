@@ -8,6 +8,7 @@ D:\workspace\hanbaang\src\main\java\Action\DefaultPage.java
 D:\workspace\hanbaang\src\main\java\Action\InsurAction.java
 D:\workspace\hanbaang\src\main\java\hanbaang\DBConnection.java
 D:\workspace\hanbaang\src\main\java\DTO\DTO_CHIM.java
+D:\workspace\hanbaang\src\main\java\Action\SympAction.java
 D:\workspace\hanbaang\src\main\java\DTO\DTO_INSUR_DETAIL.java
 D:\workspace\hanbaang\src\main\java\Action\PrescAction.java
 D:\workspace\hanbaang\src\main\java\hanbaang\Configuration.java
@@ -22,6 +23,7 @@ D:\workspace\hanbaang\src\main\java\DTO\DTO_TREAT.java
 D:\workspace\hanbaang\src\main\java\Action\InsurDrugAction.java
 D:\workspace\hanbaang\src\main\java\Action\FreqPrescAction.java
 D:\workspace\hanbaang\src\main\java\Action\PatntAction.java
+D:\workspace\hanbaang\src\main\java\DTO\DTO_SYMP.java
 D:\workspace\hanbaang\src\main\java\hanbaang\Controller.java
 D:\workspace\hanbaang\src\main\java\DTO\DTO_RECEP.java
 D:\workspace\hanbaang\src\main\java\DTO\DTO_INSUR.java

@@ -24,6 +24,7 @@ public class DAO {
 	static DTO_INSUR_DRUG dto_IDR;
 	static DTO_INSUR_PRESC dto_IR;
 	static DTO_CHIM dto_C;
+	static DTO_SYMP dto_SY;
 	private static DAO instance = new DAO();
 
 	public static DAO getInstance() {
@@ -113,7 +114,7 @@ public class DAO {
 			if (rs.next()) {
 				dto_ACC = new DTO_ACCOUNT();
 				number = 1;
-				dto_ACC.AC_id = rs.getInt(number++);
+				dto_ACC.AC_ID = rs.getInt(number++);
 				dto_ACC.ID = rs.getString(number++);
 				dto_ACC.PW = rs.getString(number++);
 				dto_ACC.HOSPI_NAME = rs.getString(number++);
@@ -158,7 +159,7 @@ public class DAO {
 			while (rs.next()) {
 				number = 1;
 				DTO_ACCOUNT dto_ACC = new DTO_ACCOUNT();
-				dto_ACC.AC_id = rs.getInt(number++);
+				dto_ACC.AC_ID = rs.getInt(number++);
 				dto_ACC.ID = rs.getString(number++);
 				dto_ACC.PW = rs.getString(number++);
 				dto_ACC.HOSPI_NAME = rs.getString(number++);
@@ -195,7 +196,7 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_ACCOUNT_BY_PK);
-			pstmt.setInt(number++, dto_ACC.getAC_id());
+			pstmt.setInt(number++, dto_ACC.getAC_ID());
 			pstmt.setString(number++, dto_ACC.getID());
 			pstmt.setString(number++, dto_ACC.getPW());
 			pstmt.setString(number++, dto_ACC.getHOSPI_NAME());
@@ -615,15 +616,15 @@ public class DAO {
 		}
 	}
 
-	// RECEP TABLE SQL
+	// 1 TABLE SQL
 
 	public Boolean INSERT_RECEP(DTO_RECEP dto_R, Connection conn) {
 		PreparedStatement pstmt = null;
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_RECEP);
-			pstmt.setInt(number++, dto_R.R_ID);
 			pstmt.setInt(number++, dto_R.PA_ID);
+			pstmt.setInt(number++, dto_R.SA_ID);
 			pstmt.setString(number++, dto_R.PATNT_NAME);
 			pstmt.setDate(number++, dto_R.RECEP_DATE);
 			pstmt.setString(number++, dto_R.STATE);
@@ -662,6 +663,7 @@ public class DAO {
 				dto_R = new DTO_RECEP();
 				dto_R.R_ID = rs.getInt(number++);
 				dto_R.PA_ID = rs.getInt(number++);
+				dto_R.SA_ID = rs.getInt(number++);
 				dto_R.PATNT_NAME = rs.getString(number++);
 				dto_R.RECEP_DATE = rs.getDate(number++);
 				dto_R.STATE = rs.getString(number++);
@@ -702,6 +704,7 @@ public class DAO {
 				DTO_RECEP dto_R = new DTO_RECEP();
 				dto_R.R_ID = rs.getInt(number++);
 				dto_R.PA_ID = rs.getInt(number++);
+				dto_R.SA_ID = rs.getInt(number++);
 				dto_R.PATNT_NAME = rs.getString(number++);
 				dto_R.RECEP_DATE = rs.getDate(number++);
 				dto_R.STATE = rs.getString(number++);
@@ -734,6 +737,7 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_RECEP_BY_PK);
 			pstmt.setInt(number++, dto_R.PA_ID);
+			pstmt.setInt(number++, dto_R.SA_ID);
 			pstmt.setString(number++, dto_R.PATNT_NAME);
 			pstmt.setDate(number++, dto_R.RECEP_DATE);
 			pstmt.setString(number++, dto_R.STATE);
@@ -789,7 +793,6 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_TREAT);
 			pstmt.setInt(number++, dto_TR.R_ID);
-			pstmt.setString(number++, dto_TR.SYMP_NAME);
 			pstmt.setString(number++, dto_TR.MEMO);
 			if (pstmt.executeUpdate() > 0) {
 				return true;
@@ -821,7 +824,6 @@ public class DAO {
 				DTO_TREAT dto_TR = new DTO_TREAT();
 				dto_TR.TR_ID = rs.getInt(number++);
 				dto_TR.R_ID = rs.getInt(number++);
-				dto_TR.SYMP_NAME = rs.getString(number++);
 				dto_TR.MEMO = rs.getString(number++);
 				return dto_TR;
 			} else {
@@ -857,7 +859,6 @@ public class DAO {
 				DTO_TREAT dto_TR = new DTO_TREAT();
 				dto_TR.TR_ID = rs.getInt(number++);
 				dto_TR.R_ID = rs.getInt(number++);
-				dto_TR.SYMP_NAME = rs.getString(number++);
 				dto_TR.MEMO = rs.getString(number++);
 				result.add(dto_TR);
 			}
@@ -885,7 +886,6 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_TREAT_BY_PK);
 			pstmt.setInt(number++, dto_TR.R_ID);
-			pstmt.setString(number++, dto_TR.SYMP_NAME);
 			pstmt.setString(number++, dto_TR.MEMO);
 			pstmt.setInt(number++, dto_TR.TR_ID);
 			if (pstmt.executeUpdate() > 0) {
@@ -936,12 +936,14 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_DRUG);
 			pstmt.setInt(number++, dto_DR.PR_ID);
-			pstmt.setInt(number++, dto_DR.TR_ID);
-			pstmt.setInt(number++, dto_DR.R_ID);
 			pstmt.setString(number++, dto_DR.DRUG_CODE);
-			pstmt.setString(number++, dto_DR.DRUG_BRAND);
+			pstmt.setString(number++, dto_DR.DRUG_COMP_NAME);
+			pstmt.setString(number++, dto_DR.DRUG_NAME);
 			pstmt.setInt(number++, dto_DR.DRUG_WEIGHT);
 			pstmt.setString(number++, dto_DR.DRUG_MEMO);
+			pstmt.setBoolean(number++, dto_DR.INSUR);
+			pstmt.setString(number++, dto_DR.TYPE);
+			pstmt.setString(number++, dto_DR.TYPE_ID);
 			if (pstmt.executeUpdate() > 0) {
 				return true;
 			} else {
@@ -973,12 +975,14 @@ public class DAO {
 				dto_DR = new DTO_DRUG();
 				dto_DR.DR_ID = rs.getInt(number++);
 				dto_DR.PR_ID = rs.getInt(number++);
-				dto_DR.TR_ID = rs.getInt(number++);
-				dto_DR.R_ID = rs.getInt(number++);
 				dto_DR.DRUG_CODE = rs.getString(number++);
-				dto_DR.DRUG_BRAND = rs.getString(number++);
+				dto_DR.DRUG_COMP_NAME = rs.getString(number++);
+				dto_DR.DRUG_NAME = rs.getString(number++);
 				dto_DR.DRUG_WEIGHT = rs.getInt(number++);
 				dto_DR.DRUG_MEMO = rs.getString(number++);
+				dto_DR.INSUR = rs.getBoolean(number++);
+				dto_DR.TYPE = rs.getString(number++);
+				dto_DR.TYPE_ID = rs.getString(number++);
 				return dto_DR;
 			} else {
 				return null;
@@ -1014,12 +1018,14 @@ public class DAO {
 				dto_DR = new DTO_DRUG();
 				dto_DR.DR_ID = rs.getInt(number++);
 				dto_DR.PR_ID = rs.getInt(number++);
-				dto_DR.TR_ID = rs.getInt(number++);
-				dto_DR.R_ID = rs.getInt(number++);
 				dto_DR.DRUG_CODE = rs.getString(number++);
-				dto_DR.DRUG_BRAND = rs.getString(number++);
+				dto_DR.DRUG_COMP_NAME = rs.getString(number++);
+				dto_DR.DRUG_NAME = rs.getString(number++);
 				dto_DR.DRUG_WEIGHT = rs.getInt(number++);
 				dto_DR.DRUG_MEMO = rs.getString(number++);
+				dto_DR.INSUR = rs.getBoolean(number++);
+				dto_DR.TYPE = rs.getString(number++);
+				dto_DR.TYPE_ID = rs.getString(number++);
 				result.add(dto_DR);
 			}
 			return result;
@@ -1039,7 +1045,7 @@ public class DAO {
 				}
 		}
 	}
-	
+
 	public LinkedList<DTO_DRUG> SELECT_DRUG_BY_FK_PR(int PR_ID, Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -1055,12 +1061,14 @@ public class DAO {
 				dto_DR = new DTO_DRUG();
 				dto_DR.DR_ID = rs.getInt(number++);
 				dto_DR.PR_ID = rs.getInt(number++);
-				dto_DR.TR_ID = rs.getInt(number++);
-				dto_DR.R_ID = rs.getInt(number++);
 				dto_DR.DRUG_CODE = rs.getString(number++);
-				dto_DR.DRUG_BRAND = rs.getString(number++);
+				dto_DR.DRUG_COMP_NAME = rs.getString(number++);
+				dto_DR.DRUG_NAME = rs.getString(number++);
 				dto_DR.DRUG_WEIGHT = rs.getInt(number++);
 				dto_DR.DRUG_MEMO = rs.getString(number++);
+				dto_DR.INSUR = rs.getBoolean(number++);
+				dto_DR.TYPE = rs.getString(number++);
+				dto_DR.TYPE_ID = rs.getString(number++);
 				result.add(dto_DR);
 			}
 			return result;
@@ -1087,12 +1095,14 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_DRUG_BY_PK);
 			pstmt.setInt(number++, dto_DR.PR_ID);
-			pstmt.setInt(number++, dto_DR.TR_ID);
-			pstmt.setInt(number++, dto_DR.R_ID);
 			pstmt.setString(number++, dto_DR.DRUG_CODE);
-			pstmt.setString(number++, dto_DR.DRUG_BRAND);
+			pstmt.setString(number++, dto_DR.DRUG_COMP_NAME);
+			pstmt.setString(number++, dto_DR.DRUG_NAME);
 			pstmt.setInt(number++, dto_DR.DRUG_WEIGHT);
 			pstmt.setString(number++, dto_DR.DRUG_MEMO);
+			pstmt.setBoolean(number++, dto_DR.INSUR);
+			pstmt.setString(number++, dto_DR.TYPE);
+			pstmt.setString(number++, dto_DR.TYPE_ID);
 			pstmt.setInt(number++, dto_DR.DR_ID);
 			if (pstmt.executeUpdate() > 0) {
 				return true;
@@ -1310,7 +1320,7 @@ public class DAO {
 				}
 		}
 	}
-
+/*
 	// FREQ_PRESC TABLE SQL
 
 	public Boolean INSERT_FREQ_PRESC(DTO_FREQ_PRESC dto_FP, Connection conn) {
@@ -1456,7 +1466,7 @@ public class DAO {
 				}
 		}
 	}
-
+*/
 	// INSUR TABLE SQL
 
 	public Boolean INSERT_INSUR(DTO_INSUR dto_IN, Connection conn) {
@@ -1465,8 +1475,6 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_INSUR);
 			pstmt.setInt(number++, dto_IN.PR_ID);
-			pstmt.setInt(number++, dto_IN.TR_ID);
-			pstmt.setInt(number++, dto_IN.R_ID);
 			pstmt.setDate(number++, dto_IN.TREAT_DATE);
 			pstmt.setString(number++, dto_IN.PATNT_NAME);
 			pstmt.setString(number++, dto_IN.CID);
@@ -1508,8 +1516,6 @@ public class DAO {
 				dto_IN = new DTO_INSUR();
 				dto_IN.IN_ID = rs.getInt(number++);
 				dto_IN.PR_ID = rs.getInt(number++);
-				dto_IN.TR_ID = rs.getInt(number++);
-				dto_IN.R_ID = rs.getInt(number++);
 				dto_IN.TREAT_DATE = rs.getDate(number++);
 				dto_IN.PATNT_NAME = rs.getString(number++);
 				dto_IN.CID = rs.getString(number++);
@@ -1555,8 +1561,6 @@ public class DAO {
 				dto_IN = new DTO_INSUR();
 				dto_IN.IN_ID = rs.getInt(number++);
 				dto_IN.PR_ID = rs.getInt(number++);
-				dto_IN.TR_ID = rs.getInt(number++);
-				dto_IN.R_ID = rs.getInt(number++);
 				dto_IN.TREAT_DATE = rs.getDate(number++);
 				dto_IN.PATNT_NAME = rs.getString(number++);
 				dto_IN.CID = rs.getString(number++);
@@ -1592,9 +1596,6 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_INSUR_BY_PK);
-			pstmt.setInt(number++, dto_IN.PR_ID);
-			pstmt.setInt(number++, dto_IN.TR_ID);
-			pstmt.setInt(number++, dto_IN.R_ID);
 			pstmt.setDate(number++, dto_IN.TREAT_DATE);
 			pstmt.setString(number++, dto_IN.PATNT_NAME);
 			pstmt.setString(number++, dto_IN.CID);
@@ -1653,13 +1654,11 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_INSUR_DETAIL);
-			pstmt.setInt(number++, dto_ID._ID);
-			pstmt.setInt(number++, dto_ID.PR_ID);
-			pstmt.setInt(number++, dto_ID.TR_ID);
-			pstmt.setInt(number++, dto_ID.R_ID);
+
 			pstmt.setString(number++, dto_ID.TREAT_NAME);
 			pstmt.setString(number++, dto_ID.TREAT_CODE);
 			pstmt.setString(number++, dto_ID.PART);
+			pstmt.setInt(number++, dto_ID.TYPE);
 			pstmt.setInt(number++, dto_ID.ONCE_DOSE);
 			pstmt.setInt(number++, dto_ID.TOTAL_DOSE);
 			pstmt.setInt(number++, dto_ID.TOTAL_CHARGE);
@@ -1693,11 +1692,9 @@ public class DAO {
 				number = 1;
 				dto_ID = new DTO_INSUR_DETAIL();
 				dto_ID._ID = rs.getInt(number++);
-				dto_ID.PR_ID = rs.getInt(number++);
-				dto_ID.TR_ID = rs.getInt(number++);
-				dto_ID.R_ID = rs.getInt(number++);
 				dto_ID.TREAT_NAME = rs.getString(number++);
 				dto_ID.TREAT_CODE = rs.getString(number++);
+				dto_ID.TYPE = rs.getInt(number++);
 				dto_ID.PART = rs.getString(number++);
 				dto_ID.ONCE_DOSE = rs.getInt(number++);
 				dto_ID.TOTAL_DOSE = rs.getInt(number++);
@@ -1736,11 +1733,9 @@ public class DAO {
 				number = 1;
 				dto_ID = new DTO_INSUR_DETAIL();
 				dto_ID._ID = rs.getInt(number++);
-				dto_ID.PR_ID = rs.getInt(number++);
-				dto_ID.TR_ID = rs.getInt(number++);
-				dto_ID.R_ID = rs.getInt(number++);
 				dto_ID.TREAT_NAME = rs.getString(number++);
 				dto_ID.TREAT_CODE = rs.getString(number++);
+				dto_ID.TYPE = rs.getInt(number++);
 				dto_ID.PART = rs.getString(number++);
 				dto_ID.ONCE_DOSE = rs.getInt(number++);
 				dto_ID.TOTAL_DOSE = rs.getInt(number++);
@@ -1770,9 +1765,6 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_INSUR_DETAIL_BY_PK);
-			pstmt.setInt(number++, dto_ID.PR_ID);
-			pstmt.setInt(number++, dto_ID.TR_ID);
-			pstmt.setInt(number++, dto_ID.R_ID);
 			pstmt.setString(number++, dto_ID.TREAT_NAME);
 			pstmt.setString(number++, dto_ID.TREAT_CODE);
 			pstmt.setString(number++, dto_ID.PART);
@@ -1827,10 +1819,11 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_PHYSIC);
-			pstmt.setInt(number++, dto_PH.PR_ID);
+			pstmt.setInt(number++, dto_PH.PH_ID);
+			pstmt.setInt(number++, dto_PH.CH_ID);
 			pstmt.setInt(number++, dto_PH.TR_ID);
-			pstmt.setInt(number++, dto_PH.R_ID);
 			pstmt.setString(number++, dto_PH.PH_TYPE);
+			pstmt.setString(number++, dto_PH.NAME);
 			pstmt.setString(number++, dto_PH.PART_CODE);
 			pstmt.setBoolean(number++, dto_PH.INSUR);
 			if (pstmt.executeUpdate() > 0) {
@@ -1863,12 +1856,13 @@ public class DAO {
 				number = 1;
 				dto_PH = new DTO_PHYSIC();
 				dto_PH.PH_ID = rs.getInt(number++);
-				dto_PH.PR_ID = rs.getInt(number++);
+				dto_PH.CH_ID = rs.getInt(number++);
 				dto_PH.TR_ID = rs.getInt(number++);
-				dto_PH.R_ID = rs.getInt(number++);
 				dto_PH.PH_TYPE = rs.getString(number++);
+				dto_PH.NAME = rs.getString(number++);
 				dto_PH.PART_CODE = rs.getString(number++);
 				dto_PH.INSUR = rs.getBoolean(number++);
+
 				return dto_PH;
 			} else {
 				return null;
@@ -1903,12 +1897,13 @@ public class DAO {
 				number = 1;
 				dto_PH = new DTO_PHYSIC();
 				dto_PH.PH_ID = rs.getInt(number++);
-				dto_PH.PR_ID = rs.getInt(number++);
+				dto_PH.CH_ID = rs.getInt(number++);
 				dto_PH.TR_ID = rs.getInt(number++);
-				dto_PH.R_ID = rs.getInt(number++);
 				dto_PH.PH_TYPE = rs.getString(number++);
+				dto_PH.NAME = rs.getString(number++);
 				dto_PH.PART_CODE = rs.getString(number++);
 				dto_PH.INSUR = rs.getBoolean(number++);
+
 				result.add(dto_PH);
 			}
 			return result;
@@ -1934,10 +1929,10 @@ public class DAO {
 		int number = 1;
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_PHYSIC_BY_PK);
-			pstmt.setInt(number++, dto_PH.PR_ID);
+			pstmt.setInt(number++, dto_PH.CH_ID);
 			pstmt.setInt(number++, dto_PH.TR_ID);
-			pstmt.setInt(number++, dto_PH.R_ID);
 			pstmt.setString(number++, dto_PH.PH_TYPE);
+			pstmt.setString(number++, dto_PH.NAME);
 			pstmt.setString(number++, dto_PH.PART_CODE);
 			pstmt.setBoolean(number++, dto_PH.INSUR);
 			pstmt.setInt(number++, dto_PH.PH_ID);
@@ -2431,6 +2426,159 @@ public class DAO {
 		try {
 			pstmt = conn.prepareStatement(DefaultValue.SQL_DELETE_CHIM_BY_PK);
 			pstmt.setInt(number++, dto_C.CH_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	// SYMP TABLE
+
+	public static final Boolean INSERT_SYMP(DTO_SYMP dto_SY, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_INSERT_SYMP);
+			pstmt.setInt(number++, dto_SY.TR_ID);
+			pstmt.setString(number++, dto_SY.SYMP_CODE);
+			pstmt.setString(number++, dto_SY.SYMP_NAME);
+			pstmt.setBoolean(number++, dto_SY.INSUR);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final DTO_SYMP SELECT_SYMP_BY_PK(int SY_ID, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DTO_SYMP dto_SY =null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_SYMP_BY_PK);
+			pstmt.setInt(number++, SY_ID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				number = 1;
+				dto_SY = new DTO_SYMP();
+				dto_SY.SY_ID = rs.getInt(number++);
+				dto_SY.TR_ID = rs.getInt(number++);
+				dto_SY.SYMP_CODE = rs.getString(number++);
+				dto_SY.SYMP_NAME = rs.getString(number++);
+				dto_SY.INSUR = rs.getBoolean(number++);
+				return dto_SY;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final LinkedList<DTO_SYMP> SELECT_SYMP(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		DTO_SYMP dto_SY = null;
+		LinkedList<DTO_SYMP> result = new LinkedList<>();
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_SELECT_SYMP);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				number = 1;
+				dto_SY = new DTO_SYMP();
+				dto_SY.SY_ID = rs.getInt(number++);
+				dto_SY.TR_ID = rs.getInt(number++);
+				dto_SY.SYMP_CODE = rs.getString(number++);
+				dto_SY.SYMP_NAME = rs.getString(number++);
+				dto_SY.INSUR = rs.getBoolean(number++);
+				result.add(dto_SY);
+			}
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean UPDATE_SYMP_BY_PK(DTO_SYMP dto_SY, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_UPDATE_SYMP_BY_PK);
+			pstmt.setInt(number++, dto_SY.TR_ID);
+			pstmt.setString(number++, dto_SY.SYMP_CODE);
+			pstmt.setString(number++, dto_SY.SYMP_NAME);
+			pstmt.setBoolean(number++, dto_SY.INSUR);
+			pstmt.setInt(number++, dto_SY.SY_ID);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
+	public static final Boolean DELETE_SYMP_BY_PK(DTO_SYMP dto_SY, Connection conn) {
+		PreparedStatement pstmt = null;
+		int number = 1;
+		try {
+			pstmt = conn.prepareStatement(DefaultValue.SQL_DELETE_SYMP_BY_PK);
+			pstmt.setInt(number++, dto_SY.SY_ID);
 			if (pstmt.executeUpdate() > 0) {
 				return true;
 			} else {

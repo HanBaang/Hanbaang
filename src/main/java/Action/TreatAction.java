@@ -42,10 +42,9 @@ public class TreatAction implements Action {
 			break;
 		case CODE_INSERT:
 			String R_ID = request.getParameter("R_ID");
-			String SYMP_NAME = request.getParameter("SYMP_NAME");
 			String MEMO = request.getParameter("MEMO");
 			dto_TR = new DTO_TREAT(Integer.parseInt(R_ID),
-					SYMP_NAME, MEMO);
+					 MEMO);
 			result = dao.INSERT_TREAT(dto_TR, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;
@@ -61,10 +60,9 @@ public class TreatAction implements Action {
 		case CODE_UPDATE:
 			String TR_ID_U = request.getParameter("TR_ID");
 			String R_ID_U = request.getParameter("R_ID");
-			String SYMP_NAME_U = request.getParameter("SYMP_NAME");
 			String MEMO_U = request.getParameter("MEMO");
 			dto_TR = new DTO_TREAT(Integer.parseInt(TR_ID_U), Integer.parseInt(R_ID_U),
-					SYMP_NAME_U, MEMO_U);
+					 MEMO_U);
 			result = dao.UPDATE_TREAT_BY_PK(dto_TR, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;

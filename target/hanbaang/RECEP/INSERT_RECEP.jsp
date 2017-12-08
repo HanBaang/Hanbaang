@@ -11,15 +11,20 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
-	Boolean result = (Boolean) request.getAttribute("result");
-	if (result == null)
-		result = false;
+	boolean result = (Boolean) request.getAttribute("result");
 
-	if (result) {
-
-	} else {
+	if(result == false){
+		%>
+		"Fail"
+		<%
+	}
+	else{
 %>
-{ "object" : [ { } ] }
+
+
+{ "object" : [ { "result" : "<%=result%>" } ] }
 <%
 	}
 %>
+
+

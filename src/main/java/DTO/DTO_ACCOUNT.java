@@ -3,7 +3,7 @@ package DTO;
 import java.sql.Date;
 
 public class DTO_ACCOUNT {
-	public int AC_id;
+	public int AC_ID;
 	public String ID;
 	public String PW;
 	public String HOSPI_NAME;
@@ -30,7 +30,7 @@ public class DTO_ACCOUNT {
 	public DTO_ACCOUNT(int AC_id, String ID, String PW, String HOSPI_NAME, String ORG_NUM, String COMP_NUM,
 			String PHONE, String MAIL, String ADDR, String ADDR_DETAIL, Date REG_DATE, Date MOD_DATE) {
 		super();
-		this.AC_id = AC_id;
+		this.AC_ID = AC_id;
 		this.ID = ID;
 		this.PW = PW;
 		this.HOSPI_NAME = HOSPI_NAME;
@@ -60,12 +60,12 @@ public class DTO_ACCOUNT {
 		this.MOD_DATE = MOD_DATE;
 	}
 
-	public int getAC_id() {
-		return AC_id;
+	public int getAC_ID() {
+		return AC_ID;
 	}
 
-	public void setAC_id(int aC_id) {
-		AC_id = aC_id;
+	public void setAC_ID(int aC_ID) {
+		AC_ID = aC_ID;
 	}
 
 	public String getID() {
@@ -155,4 +155,14 @@ public class DTO_ACCOUNT {
 	public void setMOD_DATE(Date mOD_DATE) {
 		MOD_DATE = mOD_DATE;
 	}
+
+	public int getNumOfCol() {
+		return numOfCol;
+	}
+
+	public void setNumOfCol(int numOfCol) {
+		this.numOfCol = numOfCol;
+	}
+	
+	
 }
