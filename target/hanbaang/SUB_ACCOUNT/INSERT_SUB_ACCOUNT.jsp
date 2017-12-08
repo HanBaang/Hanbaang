@@ -4,7 +4,6 @@
 <%@page import="hanbaang.*"%>
 <%@page import="Data.*"%>
 <%@page import="DAO.*"%>
-<%@page import="org.json.simple.*"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -14,6 +13,7 @@
 <%@ page import="java.sql.*"%>
 <%
 	Boolean result = (Boolean) request.getAttribute("result");
+
 	if (result == null)
 		result = false;
 

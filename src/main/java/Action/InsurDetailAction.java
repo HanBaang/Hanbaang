@@ -41,19 +41,15 @@ public class InsurDetailAction implements Action {
 			request.setAttribute("result", new Boolean(result));
 			break;
 		case CODE_INSERT:
-			String ID_ID_I = request.getParameter("_ID");
-			String PR_ID = request.getParameter("PR_ID");
-			String TR_ID = request.getParameter("TR_ID");
-			String R_ID = request.getParameter("R_ID");
 			String TREAT_NAME = request.getParameter("TREAT_NAME");
 			String TREAT_CODE = request.getParameter("TREAT_CODE");
+			String TYPE =request.getParameter("TYPE");
 			String PART = request.getParameter("PART");
 			String ONCE_DOSE = request.getParameter("ONCE_DOSE");
 			String TOTAL_DOSE = request.getParameter("TOTAL_DOSE");
 			String TOTAL_CHARGE = request.getParameter("TOTAL_CHARGE");
 
-			dto_ID = new DTO_INSUR_DETAIL(Integer.parseInt(ID_ID_I), Integer.parseInt(PR_ID), Integer.parseInt(TR_ID),
-					Integer.parseInt(R_ID), TREAT_NAME, TREAT_CODE, PART, Integer.parseInt(ONCE_DOSE),
+			dto_ID = new DTO_INSUR_DETAIL(TREAT_NAME, TREAT_CODE, Integer.parseInt(TYPE), PART, Integer.parseInt(ONCE_DOSE),
 					Integer.parseInt(TOTAL_DOSE), Integer.parseInt(TOTAL_CHARGE));
 			result = dao.INSERT_INSUR_DETAIL(dto_ID, conn);
 			request.setAttribute("result", new Boolean(result));
@@ -69,18 +65,15 @@ public class InsurDetailAction implements Action {
 			break;
 		case CODE_UPDATE:
 			String ID_ID_U = request.getParameter("_ID");
-			String PR_ID_U = request.getParameter("PR_ID");
-			String TR_ID_U = request.getParameter("TR_ID");
-			String R_ID_U = request.getParameter("R_ID");
 			String TREAT_NAME_U = request.getParameter("TREAT_NAME");
 			String TREAT_CODE_U = request.getParameter("TREAT_CODE");
+			String TYPE_U = request.getParameter("TYPE");
 			String PART_U = request.getParameter("PART");
 			String ONCE_DOSE_U = request.getParameter("ONCE_DOSE");
 			String TOTAL_DOSE_U = request.getParameter("TOTAL_DOSE");
 			String TOTAL_CHARGE_U = request.getParameter("TOTAL_CHARGE");
 
-			dto_ID = new DTO_INSUR_DETAIL(Integer.parseInt(ID_ID_U), Integer.parseInt(PR_ID_U), Integer.parseInt(TR_ID_U),
-					Integer.parseInt(R_ID_U), TREAT_NAME_U, TREAT_CODE_U, PART_U, Integer.parseInt(ONCE_DOSE_U),
+			dto_ID = new DTO_INSUR_DETAIL(Integer.parseInt(ID_ID_U), TREAT_NAME_U, TREAT_CODE_U,Integer.parseInt(TYPE_U), PART_U, Integer.parseInt(ONCE_DOSE_U),
 					Integer.parseInt(TOTAL_DOSE_U), Integer.parseInt(TOTAL_CHARGE_U));
 			result = dao.UPDATE_INSUR_DETAIL_BY_PK(dto_ID, conn);
 			request.setAttribute("result", new Boolean(result));

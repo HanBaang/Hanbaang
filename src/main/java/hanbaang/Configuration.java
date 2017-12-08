@@ -35,6 +35,12 @@ public class Configuration implements ServletContextListener {
 		actions.put("/SELECT_ACCOUNT.hb", action);
 		action = new AccountAction("/ACCOUNT/UPDATE_ACCOUNT_BY_PK.jsp", 5);
 		actions.put("/UPDATE_ACCOUNT_BY_PK.hb", action);
+		action = new AccountAction("/ACCOUNT/LOGIN_ACCOUNT.jsp", 6);
+		actions.put("/LOGIN_ACCOUNT.hb", action);
+		action = new AccountAction("/ACCOUNT/LOGOUT_ACCOUNT.jsp", 7);
+		actions.put("/LOGOUT_ACCOUNT.hb", action);
+		action = new AccountAction("/ACCOUNT/LOGIN_TEST.jsp", 8);
+		actions.put("/LOGIN_TEST.hb", action);
 
 		// DRUG TABLE ACTION
 		action = new DrugAction("/DRUG/DELETE_DRUG_BY_PK.jsp", 1);
@@ -47,6 +53,8 @@ public class Configuration implements ServletContextListener {
 		actions.put("/SELECT_DRUG.hb", action);
 		action = new DrugAction("/DRUG/UPDATE_DRUG_BY_PK.jsp", 5);
 		actions.put("/UPDATE_DRUG_BY_PK.hb", action);
+		action = new DrugAction("/DRUG/SELECT_DRUG.jsp", 6);
+		actions.put("/SELECT_DRUG_BY_FK_PR.hb", action);
 
 		// FREQ PRESC ACTION
 		action = new FreqPrescAction("/FREQ_PRESC/DELETE_FREQ_PRESC_BY_PK.jsp", 1);
@@ -79,9 +87,9 @@ public class Configuration implements ServletContextListener {
 		actions.put("/INSERT_INSUR_DETAIL.hb", action);
 		action = new InsurDetailAction("/INSUR_DETAIL/SELECT_INSUR_DETAIL_BY_PK.jsp", 3);
 		actions.put("/SELECT_INSUR_DETAIL_BY_PK.hb", action);
-		action = new InsurDetailAction("/INSUR/SELECT_INSUR_DETAIL.jsp", 4);
+		action = new InsurDetailAction("/INSUR_DETAIL/SELECT_INSUR_DETAIL.jsp", 4);
 		actions.put("/SELECT_INSUR_DETAIL.hb", action);
-		action = new InsurDetailAction("/INSUR/UPDATE_INSUR_DETAIL_BY_PK.jsp", 5);
+		action = new InsurDetailAction("/INSUR_DETAIL/UPDATE_INSUR_DETAIL_BY_PK.jsp", 5);
 		actions.put("/UPDATE_INSUR_DETAIL_BY_PK.hb", action);
 
 		// PATNT TABLE ACTION
@@ -145,17 +153,65 @@ public class Configuration implements ServletContextListener {
 		actions.put("/UPDATE_SUB_ACCOUNT_BY_PK.hb", action);
 
 		// TREAT TABLE ACTION
-		action = new RecepAction("/TREAT/DELETE_TREAT_BY_PK.jsp", 1);
+		action = new TreatAction("/TREAT/DELETE_TREAT_BY_PK.jsp", 1);
 		actions.put("/DELETE_TREAT_BY_PK.hb", action);
-		action = new RecepAction("/TREAT/INSERT_TREAT.jsp", 2);
+		action = new TreatAction("/TREAT/INSERT_TREAT.jsp", 2);
 		actions.put("/INSERT_TREAT.hb", action);
-		action = new RecepAction("/TREAT/SELECT_TREAT_BY_PK.jsp", 3);
+		action = new TreatAction("/TREAT/SELECT_TREAT_BY_PK.jsp", 3);
 		actions.put("/SELECT_TREAT_BY_PK.hb", action);
-		action = new RecepAction("/TREAT/SELECT_TREAT.jsp", 4);
+		action = new TreatAction("/TREAT/SELECT_TREAT.jsp", 4);
 		actions.put("/SELECT_TREAT.hb", action);
-		action = new RecepAction("/TREAT/UPDATE_TREAT_BY_PK.jsp", 5);
+		action = new TreatAction("/TREAT/UPDATE_TREAT_BY_PK.jsp", 5);
 		actions.put("/UPDATE_TREAT_BY_PK.hb", action);
 
+		// CHIM TABLE ACTION
+		action = new ChimAction("/CHIM/DELETE_CHIM_BY_PK.jsp", 1);
+		actions.put("/DELETE_CHIM_BY_PK.hb", action);
+		action = new ChimAction("/CHIM/INSERT_CHIM.jsp", 2);
+		actions.put("/INSERT_CHIM.hb", action);
+		action = new ChimAction("/CHIM/SELECT_CHIM_BY_PK.jsp", 3);
+		actions.put("/SELECT_CHIM_BY_PK.hb", action);
+		action = new ChimAction("/CHIM/SELECT_CHIM.jsp", 4);
+		actions.put("/SELECT_CHIM.hb", action);
+		action = new ChimAction("/CHIM/UPDATE_CHIM_BY_PK.jsp", 5);
+		actions.put("/UPDATE_CHIM_BY_PK.hb", action);
+
+		// INSUR_DRUG TABLE ACTION
+		action = new InsurDrugAction("/INSUR_DRUG/DELETE_INSUR_DRUG_BY_PK.jsp", 1);
+		actions.put("/DELETE_INSUR_DRUG_BY_PK.hb", action);
+		action = new InsurDrugAction("/InsurDrug/INSERT_INSUR_DRUG.jsp", 2);
+		actions.put("/INSERT_INSUR_DRUG.hb", action);
+		action = new InsurDrugAction("/INSUR_DRUG/SELECT_INSUR_DRUG_BY_PK.jsp", 3);
+		actions.put("/SELECT_INSUR_DRUG_BY_PK.hb", action);
+		action = new InsurDrugAction("/INSUR_DRUG/SELECT_INSUR_DRUG.jsp", 4);
+		actions.put("/SELECT_INSUR_DRUG.hb", action);
+		action = new InsurDrugAction("/INSUR_DRUG/UPDATE_INSUR_DRUG_BY_PK.jsp", 5);
+		actions.put("/UPDATE_INSUR_DRUG_BY_PK.hb", action);
+
+		
+		// INSUR_PRESC TABLE ACTION
+		action = new InsurPrescAction("/INSUR_PRESC/DELETE_INSUR_PRESC_BY_PK.jsp", 1);
+		actions.put("/DELETE_INSUR_PRESC_BY_PK.hb", action);
+		action = new InsurPrescAction("/InsurPRESC/INSERT_INSUR_PRESC.jsp", 2);
+		actions.put("/INSERT_INSUR_PRESC.hb", action);
+		action = new InsurPrescAction("/INSUR_PRESC/SELECT_INSUR_PRESC_BY_PK.jsp", 3);
+		actions.put("/SELECT_INSUR_PRESC_BY_PK.hb", action);
+		action = new InsurPrescAction("/INSUR_PRESC/SELECT_INSUR_PRESC.jsp", 4);
+		actions.put("/SELECT_INSUR_PRESC.hb", action);
+		action = new InsurPrescAction("/INSUR_PRESC/UPDATE_INSUR_PRESC_BY_PK.jsp", 5);
+		actions.put("/UPDATE_INSUR_PRESC_BY_PK.hb", action);
+		
+		// SYMP TABLE ACTION
+		action = new SympAction("/SYMP/DELETE_SYMP_BY_PK.jsp", 1);
+		actions.put("/DELETE_SYMP_BY_PK.hb", action);
+		action = new SympAction("/SYMP/INSERT_SYMP.jsp", 2);
+		actions.put("/INSERT_SYMP.hb", action);
+		action = new SympAction("/SYMP/SELECT_SYMP_BY_PK.jsp", 3);
+		actions.put("/SELECT_SYMP_BY_PK.hb", action);
+		action = new SympAction("/SYMP/SELECT_SYMP.jsp", 4);
+		actions.put("/SELECT_SYMP.hb", action);
+		action = new SympAction("/SYMP/UPDATE_SYMP_BY_PK.jsp", 5);
+		actions.put("/UPDATE_SYMP_BY_PK.hb", action);
 	}
 
 }

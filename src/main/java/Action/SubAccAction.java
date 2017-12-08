@@ -18,6 +18,8 @@ public class SubAccAction implements Action {
 	public static final int CODE_SELECT_BY = 3;
 	public static final int CODE_SELECT = 4;
 	public static final int CODE_UPDATE = 5;
+	public static final int CODE_LOGIN = 6;
+	public static final int CODE_LOGOUT = 7;
 	public String jspPagePath;
 	private int code;
 
@@ -36,14 +38,13 @@ public class SubAccAction implements Action {
 		
 		switch(code) {
 			case CODE_DELETE: 
-				String SA_id = request.getParameter("SA_id");
+				String SA_id = request.getParameter("SA_ID");
 				dto_SA = new DTO_SUB_ACCOUNT();
 				result = dao.DELETE_SUB_ACCOUNT_BY_PK(Integer.parseInt(SA_id), conn);
 				request.setAttribute("result", new Boolean(result));
 				break;
 			case CODE_INSERT:
-				String SA_id_I = request.getParameter("SA_id");
-				String AC_id = request.getParameter("AC_id");
+				String AC_id = request.getParameter("AC_ID");
 				String ID = request.getParameter("ID");
 				String PW = request.getParameter("PW");
 				String STAFF_NAME = request.getParameter("STAFF_NAME");
@@ -62,13 +63,13 @@ public class SubAccAction implements Action {
 				Date MOD_DATE = new Date(sdf.parse(MOD).getTime());
 
 			
-				dto_SA = new DTO_SUB_ACCOUNT(Integer.parseInt(SA_id_I), Integer.parseInt(AC_id), ID, PW,
+				dto_SA = new DTO_SUB_ACCOUNT(Integer.parseInt(AC_id), ID, PW,
 						STAFF_NAME, ORG_NUM, COMP_NUM, PHONE, MAIL, ADDR, ADDR_DETAIL, REG_DATE, MOD_DATE);
 				result = dao.INSERT_SUB_ACCOUNT(dto_SA, conn);
 				request.setAttribute("result", new Boolean(result));
 				break;
 			case CODE_SELECT_BY:
-				String SA_id_S = request.getParameter("SA_id");	
+				String SA_id_S = request.getParameter("SA_ID");	
 				dto_SA = dao.SELECT_SUB_ACCOUNT_BY_PK(Integer.parseInt(SA_id_S), conn);
 				request.setAttribute("result", dto_SA);
 				break;
@@ -77,8 +78,8 @@ public class SubAccAction implements Action {
 				request.setAttribute("result", dto_SAL);
 				break;
 			case CODE_UPDATE:
-				String SA_id_U = request.getParameter("SA_id");
-				String AC_id_U = request.getParameter("AC_id");
+				String SA_id_U = request.getParameter("SA_ID");
+				String AC_id_U = request.getParameter("AC_ID");
 				String ID_U = request.getParameter("ID");
 				String PW_U = request.getParameter("PW");
 				String STAFF_NAME_U = request.getParameter("STAFF_NAME");

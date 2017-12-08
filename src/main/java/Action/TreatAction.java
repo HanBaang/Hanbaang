@@ -41,12 +41,10 @@ public class TreatAction implements Action {
 			request.setAttribute("result", new Boolean(result));
 			break;
 		case CODE_INSERT:
-			String TR_ID_I = request.getParameter("TR_ID");
 			String R_ID = request.getParameter("R_ID");
-			String SYMP_NAME = request.getParameter("SYMP_NAME");
 			String MEMO = request.getParameter("MEMO");
-			dto_TR = new DTO_TREAT(Integer.parseInt(TR_ID_I), Integer.parseInt(R_ID),
-					SYMP_NAME, MEMO);
+			dto_TR = new DTO_TREAT(Integer.parseInt(R_ID),
+					 MEMO);
 			result = dao.INSERT_TREAT(dto_TR, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;
@@ -56,16 +54,15 @@ public class TreatAction implements Action {
 			request.setAttribute("result", dto_TR);
 			break;
 		case CODE_SELECT:
-			LinkedList<DTO_PRESC> dto_PRL = dao.SELECT_PRESC(conn);
-			request.setAttribute("result", dto_PRL);
+			LinkedList<DTO_TREAT> dto_TRL = dao.SELECT_TREAT(conn);
+			request.setAttribute("result", dto_TRL);
 			break;
 		case CODE_UPDATE:
 			String TR_ID_U = request.getParameter("TR_ID");
 			String R_ID_U = request.getParameter("R_ID");
-			String SYMP_NAME_U = request.getParameter("SYMP_NAME");
 			String MEMO_U = request.getParameter("MEMO");
 			dto_TR = new DTO_TREAT(Integer.parseInt(TR_ID_U), Integer.parseInt(R_ID_U),
-					SYMP_NAME_U, MEMO_U);
+					 MEMO_U);
 			result = dao.UPDATE_TREAT_BY_PK(dto_TR, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;

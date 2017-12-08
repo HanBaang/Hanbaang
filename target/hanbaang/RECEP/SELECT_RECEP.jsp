@@ -4,7 +4,6 @@
 <%@page import="hanbaang.*"%>
 <%@page import="Data.*"%>
 <%@page import="DAO.*"%>
-<%@page import="org.json.simple.*"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.LinkedList"%>
 
@@ -24,7 +23,7 @@
 	while (iterator.hasNext()) {
 		DTO_RECEP outer = iterator.next();
 %>
-{"R_id" : "<%=outer.R_ID%>", "PA_id" : "<%=outer.PA_ID%>", "PATNT_NAME" : "<%=outer.PATNT_NAME%>", "RECEP_DATE" : "<%=outer.RECEP_DATE%>", "STATE" : "<%=outer.STATE%>", "MEMO" : "<%=outer.MEMO%>", "MDOC" : "<%=outer.MDOC%>", "STAFF_NAME" : "<%=outer.STAFF_NAME%>"}<%=iterator.hasNext() ? "," : ""%>
+{"R_id" : "<%=outer.R_ID%>", "PA_id" : "<%=outer.PA_ID%>", "SA_id" : "<%=outer.SA_ID%>", "PATNT_NAME" : "<%=outer.PATNT_NAME%>", "RECEP_DATE" : "<%=outer.RECEP_DATE%>", "STATE" : "<%=outer.STATE%>", "MEMO" : "<%=outer.MEMO%>", "MDOC" : "<%=outer.MDOC%>", "STAFF_NAME" : "<%=outer.STAFF_NAME%>"}<%=iterator.hasNext() ? "," : ""%>
 <%
 	}
 %>

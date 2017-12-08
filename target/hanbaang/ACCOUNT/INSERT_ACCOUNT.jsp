@@ -1,10 +1,8 @@
 <%@page import="hanbaang.DBConnection"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="DTO.DTO_ACCOUNT"%>
+<%@page import="DTO.*"%>
 <%@page import="hanbaang.*"%>
 <%@page import="Data.*"%>
 <%@page import="DAO.*"%>
-<%@page import="org.json.simple.*"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.LinkedList"%>
 
@@ -13,17 +11,20 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
-	Boolean result = (Boolean) request.getAttribute("result");
-	if (result == null)
-		result = false;
+	boolean result = (Boolean) request.getAttribute("result");
 
-	if (result) {
-
-	} else {
+	if(result == false){
+		%>
+		"Fail"
+		<%
+	}
+	else{
 %>
 
-{ "object" : [ { "result": "<%=result%>" } ] }
 
+{ "object" : [ { "result" : "<%=result%>" } ] }
 <%
 	}
 %>
+
+

@@ -41,9 +41,8 @@ public class RecepAction implements Action {
 			request.setAttribute("result", new Boolean(result));
 			break;
 		case CODE_INSERT:
-		
-			String R_ID_I = request.getParameter("R_ID");
 			String PA_ID = request.getParameter("PA_ID");
+			String SA_ID = request.getParameter("SA_ID");
 			String PATNT_NAME = request.getParameter("PATNT_NAME");
 			String RD = request.getParameter("REG_DATE");
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -52,10 +51,8 @@ public class RecepAction implements Action {
 			String MEMO = request.getParameter("MEMO");
 			String MDOC = request.getParameter("MDOC");
 			String STAFF_NAME = request.getParameter("STAFF_NAME");
-		
-			dto_R = new DTO_RECEP(Integer.parseInt(R_ID_I), Integer.parseInt(PA_ID), PATNT_NAME,
-					RECEP_DATE,STATE, MEMO,
-					MDOC, STAFF_NAME);
+
+			dto_R = new DTO_RECEP(Integer.parseInt(PA_ID),Integer.parseInt(SA_ID), PATNT_NAME, RECEP_DATE, STATE, MEMO, MDOC, STAFF_NAME);
 			result = dao.INSERT_RECEP(dto_R, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;
@@ -70,6 +67,7 @@ public class RecepAction implements Action {
 			break;
 		case CODE_UPDATE:
 			String R_ID_U = request.getParameter("R_ID");
+			String SA_ID_U = request.getParameter("SA_ID");
 			String PA_ID_U = request.getParameter("PA_ID");
 			String PATNT_NAME_U = request.getParameter("PATNT_NAME");
 			String RD_U = request.getParameter("REG_DATE");
@@ -79,10 +77,9 @@ public class RecepAction implements Action {
 			String MEMO_U = request.getParameter("MEMO");
 			String MDOC_U = request.getParameter("MDOC");
 			String STAFF_NAME_U = request.getParameter("STAFF_NAME");
-		
-			dto_R = new DTO_RECEP(Integer.parseInt(R_ID_U), Integer.parseInt(PA_ID_U), PATNT_NAME_U,
-					RECEP_DATE_U,STATE_U, MEMO_U,
-					MDOC_U, STAFF_NAME_U);
+
+			dto_R = new DTO_RECEP(Integer.parseInt(R_ID_U), Integer.parseInt(PA_ID_U),  Integer.parseInt(SA_ID_U),PATNT_NAME_U, RECEP_DATE_U,
+					STATE_U, MEMO_U, MDOC_U, STAFF_NAME_U);
 			result = dao.INSERT_RECEP(dto_R, conn);
 			request.setAttribute("result", new Boolean(result));
 			break;

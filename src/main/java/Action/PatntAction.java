@@ -42,7 +42,6 @@ public class PatntAction implements Action {
 				request.setAttribute("result", new Boolean(result));
 				break;
 			case CODE_INSERT:
-				String PA_id = request.getParameter("PA_ID");
 				String PATNT_NAME = request.getParameter("PATNT_NAME");
 				String H_INSUR_NUM = request.getParameter("H_INSUR_NUM");
 				String CID = request.getParameter("CID");
@@ -59,7 +58,7 @@ public class PatntAction implements Action {
 				Date REG_DATE = new Date(sdf.parse(REG).getTime());
 				String MOD = request.getParameter("MOD_DATE");
 				Date MOD_DATE = new Date(sdf.parse(MOD).getTime());
-				dto_PA = new DTO_PATNT(Integer.parseInt(PA_id), PATNT_NAME, H_INSUR_NUM, CID, Integer.parseInt(GEND), PHONE, MAIL, ADDR, ADDR_DETAIL, MDOC, REG_DATE, MOD_DATE);
+				dto_PA = new DTO_PATNT(PATNT_NAME, H_INSUR_NUM, CID, Integer.parseInt(GEND), PHONE, MAIL, ADDR, ADDR_DETAIL, MDOC, REG_DATE, MOD_DATE);
 				result = dao.INSERT_PATNT(dto_PA, conn);
 				request.setAttribute("result", new Boolean(result));
 				break;
